@@ -11,68 +11,32 @@
 		3335004C1761567000291F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335004B1761567000291F0F /* Foundation.framework */; };
 		3335004E1761567000291F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335004D1761567000291F0F /* CoreGraphics.framework */; };
 		333500811761576500291F0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3335006F1761576500291F0F /* AppDelegate.m */; };
-		333500821761576500291F0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 333500731761576500291F0F /* ViewController.m */; };
 		333500831761576500291F0F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 333500771761576500291F0F /* Default-568h@2x.png */; };
 		333500841761576500291F0F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 333500781761576500291F0F /* Default.png */; };
 		333500851761576500291F0F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 333500791761576500291F0F /* Default@2x.png */; };
 		333500861761576500291F0F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3335007B1761576500291F0F /* MainStoryboard.storyboard */; };
 		333500881761576500291F0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3335007F1761576500291F0F /* InfoPlist.strings */; };
 		333500891761576500291F0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 333500801761576500291F0F /* main.m */; };
-		3335009B17615A8600291F0F /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009217615A2600291F0F /* libRestKit.a */; };
 		333500A117615AA100291F0F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009C17615AA100291F0F /* CFNetwork.framework */; };
 		333500A217615AA100291F0F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009D17615AA100291F0F /* CoreData.framework */; };
 		333500A317615AA100291F0F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009E17615AA100291F0F /* MobileCoreServices.framework */; };
 		333500A417615AA100291F0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009F17615AA100291F0F /* Security.framework */; };
 		333500A517615AA100291F0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333500A017615AA100291F0F /* SystemConfiguration.framework */; };
+		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
+		77F53BB617778919007FFD3E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53BB517778919007FFD3E /* MapKit.framework */; };
+		77F53BB917778F02007FFD3E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BB817778F02007FFD3E /* LoginViewController.m */; };
+		77F53BBF177791BD007FFD3E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BBE177791BD007FFD3E /* RegisterViewController.m */; };
+		77F53BC2177793FB007FFD3E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BC1177793FB007FFD3E /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3335009117615A2600291F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		3335009317615A2600291F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		3335009517615A2600291F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		3335009717615A2600291F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		3335009917615A7C00291F0F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		01606ADCB13E4F2CB218C9F3 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		333500461761567000291F0F /* CrowdCycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdCycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333500491761567000291F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3335004B1761567000291F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3335004D1761567000291F0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3335006E1761576500291F0F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3335006F1761576500291F0F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		333500721761576500291F0F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		333500731761576500291F0F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		333500771761576500291F0F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		333500781761576500291F0F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		333500791761576500291F0F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -81,12 +45,21 @@
 		3335007E1761576500291F0F /* CrowdCycle-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CrowdCycle-Prefix.pch"; sourceTree = "<group>"; };
 		3335007F1761576500291F0F /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		333500801761576500291F0F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3335008A17615A2500291F0F /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		3335009C17615AA100291F0F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3335009D17615AA100291F0F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3335009E17615AA100291F0F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3335009F17615AA100291F0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		333500A017615AA100291F0F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		77F53BB517778919007FFD3E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		77F53BB717778F02007FFD3E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		77F53BB817778F02007FFD3E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		77F53BBD177791BD007FFD3E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		77F53BBE177791BD007FFD3E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		77F53BC0177793FB007FFD3E /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		77F53BC1177793FB007FFD3E /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		8DB4058500CB4BF7B801DC1B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,12 +67,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F53BB617778919007FFD3E /* MapKit.framework in Frameworks */,
 				333500A117615AA100291F0F /* CFNetwork.framework in Frameworks */,
 				333500A217615AA100291F0F /* CoreData.framework in Frameworks */,
 				333500A317615AA100291F0F /* MobileCoreServices.framework in Frameworks */,
 				333500A417615AA100291F0F /* Security.framework in Frameworks */,
 				333500A517615AA100291F0F /* SystemConfiguration.framework in Frameworks */,
-				3335009B17615A8600291F0F /* libRestKit.a in Frameworks */,
 				3335004A1761567000291F0F /* UIKit.framework in Frameworks */,
 				3335004C1761567000291F0F /* Foundation.framework in Frameworks */,
 				3335004E1761567000291F0F /* CoreGraphics.framework in Frameworks */,
@@ -112,12 +85,13 @@
 		3335003D1761567000291F0F = {
 			isa = PBXGroup;
 			children = (
-				3335008A17615A2500291F0F /* RestKit.xcodeproj */,
+				77F53BB517778919007FFD3E /* MapKit.framework */,
 				3335006C1761576500291F0F /* Classes */,
 				333500741761576500291F0F /* Lib */,
 				333500751761576500291F0F /* Res */,
 				333500481761567000291F0F /* Frameworks */,
 				333500471761567000291F0F /* Products */,
+				01606ADCB13E4F2CB218C9F3 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +114,7 @@
 				3335009F17615AA100291F0F /* Security.framework */,
 				333500A017615AA100291F0F /* SystemConfiguration.framework */,
 				333500491761567000291F0F /* UIKit.framework */,
+				8DB4058500CB4BF7B801DC1B /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -174,8 +149,14 @@
 		333500711761576500291F0F /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				333500721761576500291F0F /* ViewController.h */,
-				333500731761576500291F0F /* ViewController.m */,
+				772CEA38177778C700AFB92D /* MainViewController.h */,
+				772CEA39177778C700AFB92D /* MainViewController.m */,
+				77F53BB717778F02007FFD3E /* LoginViewController.h */,
+				77F53BB817778F02007FFD3E /* LoginViewController.m */,
+				77F53BBD177791BD007FFD3E /* RegisterViewController.h */,
+				77F53BBE177791BD007FFD3E /* RegisterViewController.m */,
+				77F53BC0177793FB007FFD3E /* ProfileViewController.h */,
+				77F53BC1177793FB007FFD3E /* ProfileViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -228,17 +209,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3335008B17615A2500291F0F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3335009217615A2600291F0F /* libRestKit.a */,
-				3335009417615A2600291F0F /* RestKitTests.octest */,
-				3335009617615A2600291F0F /* RestKit.framework */,
-				3335009817615A2600291F0F /* RestKitFrameworkTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,14 +216,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 333500691761567000291F0F /* Build configuration list for PBXNativeTarget "CrowdCycle" */;
 			buildPhases = (
+				1845309FD2E54436AFC0B464 /* Check Pods Manifest.lock */,
 				333500421761567000291F0F /* Sources */,
 				333500431761567000291F0F /* Frameworks */,
 				333500441761567000291F0F /* Resources */,
+				B84CA500F303417B869F1065 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3335009A17615A7C00291F0F /* PBXTargetDependency */,
 			);
 			name = CrowdCycle;
 			productName = CrowdCycle;
@@ -279,49 +250,12 @@
 			mainGroup = 3335003D1761567000291F0F;
 			productRefGroup = 333500471761567000291F0F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3335008B17615A2500291F0F /* Products */;
-					ProjectRef = 3335008A17615A2500291F0F /* RestKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				333500451761567000291F0F /* CrowdCycle */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3335009217615A2600291F0F /* libRestKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRestKit.a;
-			remoteRef = 3335009117615A2600291F0F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3335009417615A2600291F0F /* RestKitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitTests.octest;
-			remoteRef = 3335009317615A2600291F0F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3335009617615A2600291F0F /* RestKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RestKit.framework;
-			remoteRef = 3335009517615A2600291F0F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3335009817615A2600291F0F /* RestKitFrameworkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitFrameworkTests.octest;
-			remoteRef = 3335009717615A2600291F0F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		333500441761567000291F0F /* Resources */ = {
@@ -338,26 +272,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1845309FD2E54436AFC0B464 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		B84CA500F303417B869F1065 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		333500421761567000291F0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				333500811761576500291F0F /* AppDelegate.m in Sources */,
-				333500821761576500291F0F /* ViewController.m in Sources */,
 				333500891761576500291F0F /* main.m in Sources */,
+				772CEA3A177778C700AFB92D /* MainViewController.m in Sources */,
+				77F53BB917778F02007FFD3E /* LoginViewController.m in Sources */,
+				77F53BBF177791BD007FFD3E /* RegisterViewController.m in Sources */,
+				77F53BC2177793FB007FFD3E /* ProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3335009A17615A7C00291F0F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = 3335009917615A7C00291F0F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		333500671761567000291F0F /* Debug */ = {
@@ -418,6 +378,7 @@
 		};
 		3335006A1761567000291F0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01606ADCB13E4F2CB218C9F3 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrowdCycle/Res/Supporting Files/CrowdCycle-Prefix.pch";
@@ -434,6 +395,7 @@
 		};
 		3335006B1761567000291F0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01606ADCB13E4F2CB218C9F3 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrowdCycle/Res/Supporting Files/CrowdCycle-Prefix.pch";

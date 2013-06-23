@@ -1,13 +1,13 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-06.
+//  Created by Yanwei Xiao on 6/23/13.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController
 
 @end

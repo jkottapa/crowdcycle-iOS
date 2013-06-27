@@ -1,15 +1,16 @@
-//
 //  AppDelegate.h
-//  CrowdCycle
-//
-//  Created by Daniel MacKenzie on 2013-06-06.
-//  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class User;
 
-@property (strong, nonatomic) UIWindow *window;
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+  User * _currentUser;
+}
+
+@property (strong, nonatomic) UIWindow * window;
+@property (nonatomic, retain) User     * currrentUser;
+
++ (AppDelegate *)appDelegate;
 
 @end

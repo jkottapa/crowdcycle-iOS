@@ -22,6 +22,7 @@
 		333500A317615AA100291F0F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009E17615AA100291F0F /* MobileCoreServices.framework */; };
 		333500A417615AA100291F0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009F17615AA100291F0F /* Security.framework */; };
 		333500A517615AA100291F0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333500A017615AA100291F0F /* SystemConfiguration.framework */; };
+		33953C32177BC22F0032FE6D /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33953C31177BC22F0032FE6D /* ServerController.m */; };
 		33A700141777FCC8006E3F8B /* Marker.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700131777FCC8006E3F8B /* Marker.m */; };
 		33A700171777FCC9006E3F8B /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700161777FCC9006E3F8B /* Filter.m */; };
 		33A7001A1777FCC9006E3F8B /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700191777FCC9006E3F8B /* Subscription.m */; };
@@ -97,6 +98,9 @@
 		3335009E17615AA100291F0F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3335009F17615AA100291F0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		333500A017615AA100291F0F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		33953C30177BC22F0032FE6D /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerController.h; sourceTree = "<group>"; };
+		33953C31177BC22F0032FE6D /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerController.m; sourceTree = "<group>"; };
+		33953C33177BC3500032FE6D /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		33A700121777FCC8006E3F8B /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
 		33A700131777FCC8006E3F8B /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marker.m; sourceTree = "<group>"; };
 		33A700151777FCC9006E3F8B /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		3335006C1761576500291F0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				33953C2C177BC21C0032FE6D /* Controllers */,
 				3335006D1761576500291F0F /* Global */,
 				333500701761576500291F0F /* Models */,
 				333500711761576500291F0F /* UIViewControllers */,
@@ -199,6 +204,7 @@
 			children = (
 				3335006E1761576500291F0F /* AppDelegate.h */,
 				3335006F1761576500291F0F /* AppDelegate.m */,
+				33953C33177BC3500032FE6D /* SynthesizeSingleton.h */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -288,6 +294,15 @@
 				333500801761576500291F0F /* main.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		33953C2C177BC21C0032FE6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33953C30177BC22F0032FE6D /* ServerController.h */,
+				33953C31177BC22F0032FE6D /* ServerController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		33A7FFE51777F64D006E3F8B /* Products */ = {
@@ -428,6 +443,7 @@
 				33A700231777FCCA006E3F8B /* SubZone.m in Sources */,
 				33A700261777FCCA006E3F8B /* User.m in Sources */,
 				33A700291777FCCA006E3F8B /* Comment.m in Sources */,
+				33953C32177BC22F0032FE6D /* ServerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

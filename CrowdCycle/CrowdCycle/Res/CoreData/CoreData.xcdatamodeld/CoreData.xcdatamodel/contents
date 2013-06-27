@@ -59,13 +59,13 @@
         <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subscription" inverseName="owner" inverseEntity="Subscription" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="142" positionY="171" width="128" height="148"/>
-        <element name="Marker" positionX="340" positionY="432" width="128" height="223"/>
+        <element name="BoxSubZone" positionX="-108" positionY="561" width="128" height="103"/>
+        <element name="CircleSubZone" positionX="-290" positionY="477" width="128" height="88"/>
         <element name="Comment" positionX="531" positionY="243" width="128" height="118"/>
+        <element name="Filter" positionX="-297" positionY="261" width="128" height="88"/>
+        <element name="Marker" positionX="340" positionY="432" width="128" height="223"/>
         <element name="Subscription" positionX="-90" positionY="276" width="128" height="118"/>
         <element name="SubZone" positionX="-108" positionY="423" width="128" height="88"/>
-        <element name="CircleSubZone" positionX="-290" positionY="477" width="128" height="88"/>
-        <element name="BoxSubZone" positionX="-108" positionY="561" width="128" height="103"/>
-        <element name="Filter" positionX="-297" positionY="261" width="128" height="88"/>
+        <element name="User" positionX="142" positionY="171" width="128" height="148"/>
     </elements>
 </model>

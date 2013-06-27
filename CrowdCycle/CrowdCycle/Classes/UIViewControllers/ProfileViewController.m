@@ -35,4 +35,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)viewTapped:(id)sender; {
+    [self dismissKeyboard];
+}
+
+- (IBAction)updateButtonPressed:(id)sender; {
+    [self dismissKeyboard];
+}
+
+- (void)dismissKeyboard; {
+    [_emailTextField endEditing:YES];
+    [_nameTextField endEditing:YES];
+    [_newPasswordTextField endEditing:YES];
+    [_confirmPasswordTextField endEditing:YES];
+    [_currentPasswordTextField endEditing:YES];
+}
 @end

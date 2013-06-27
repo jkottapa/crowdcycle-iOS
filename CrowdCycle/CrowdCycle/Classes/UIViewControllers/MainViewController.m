@@ -35,4 +35,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)profileButtonTapped:(id)sender; {
+    [self performSegueWithIdentifier:@"LoginViewController" sender:self];
+}
+
 @end

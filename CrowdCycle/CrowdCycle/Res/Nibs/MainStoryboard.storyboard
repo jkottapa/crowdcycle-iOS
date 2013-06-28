@@ -13,6 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mBt-It-8Gf">
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="455" id="utE-gV-iUr"/>
                                 </constraints>
@@ -31,11 +32,17 @@
                                 <action selector="profileButtonTapped:" destination="UCU-kl-sKt" id="rZf-pk-jaI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EGf-Og-4ZF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EGf-Og-4ZF">
+                            <connections>
+                                <action selector="dropPinButtonTapped:" destination="UCU-kl-sKt" id="XB2-B2-iJb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="mBt-It-8Gf" id="wQQ-un-WVP"/>
                         <segue destination="dWj-bb-f0x" kind="push" identifier="ProfileViewController" id="Mxm-7R-J50"/>
                         <segue destination="wbI-dh-ecD" kind="push" identifier="LoginViewController" id="bDz-oi-XMO"/>
+                        <segue destination="x6I-Vy-UVi" kind="push" identifier="CreateMarkerViewController" id="Enw-99-KPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mz2-h6-7JL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,6 +264,21 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1329" y="231"/>
+        </scene>
+        <!--Create Marker View Controller - Create Marker-->
+        <scene sceneID="e77-jX-7Ku">
+            <objects>
+                <viewController id="x6I-Vy-UVi" customClass="CreateMarkerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jwd-4d-fuE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Marker" id="6AV-Hz-c02"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Plt-xp-6EO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="925"/>
         </scene>
         <!--Login View Controller - Login-->
         <scene sceneID="kzf-tz-uUk">

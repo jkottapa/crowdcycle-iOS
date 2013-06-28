@@ -33,7 +33,9 @@
 		33A700291777FCCA006E3F8B /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700281777FCCA006E3F8B /* Comment.m */; };
 		33A7FFF51777F676006E3F8B /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A7FFEC1777F64E006E3F8B /* libRestKit.a */; };
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
+		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
 		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
+		77C409FE177DE8B500E31AB5 /* CreateMarkerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C409FD177DE8B500E31AB5 /* CreateMarkerViewController.m */; };
 		77F53BB617778919007FFD3E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53BB517778919007FFD3E /* MapKit.framework */; };
 		77F53BB917778F02007FFD3E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BB817778F02007FFD3E /* LoginViewController.m */; };
 		77F53BBF177791BD007FFD3E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BBE177791BD007FFD3E /* RegisterViewController.m */; };
@@ -119,8 +121,11 @@
 		33A700281777FCCA006E3F8B /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		33A7FFE41777F64D006E3F8B /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		33A7FFF81777F70D006E3F8B /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		77C409FC177DE8B500E31AB5 /* CreateMarkerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMarkerViewController.h; sourceTree = "<group>"; };
+		77C409FD177DE8B500E31AB5 /* CreateMarkerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMarkerViewController.m; sourceTree = "<group>"; };
 		77F53BB517778919007FFD3E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		77F53BB717778F02007FFD3E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		77F53BB817778F02007FFD3E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */,
 				33A7FFF51777F676006E3F8B /* libRestKit.a in Frameworks */,
 				77F53BB617778919007FFD3E /* MapKit.framework in Frameworks */,
 				333500A117615AA100291F0F /* CFNetwork.framework in Frameworks */,
@@ -154,6 +160,7 @@
 		3335003D1761567000291F0F = {
 			isa = PBXGroup;
 			children = (
+				771C5971177DD6DD004C715C /* CoreLocation.framework */,
 				33A7FFE41777F64D006E3F8B /* RestKit.xcodeproj */,
 				3335006C1761576500291F0F /* Classes */,
 				333500741761576500291F0F /* Lib */,
@@ -243,6 +250,8 @@
 				77F53BBE177791BD007FFD3E /* RegisterViewController.m */,
 				77F53BC0177793FB007FFD3E /* ProfileViewController.h */,
 				77F53BC1177793FB007FFD3E /* ProfileViewController.m */,
+				77C409FC177DE8B500E31AB5 /* CreateMarkerViewController.h */,
+				77C409FD177DE8B500E31AB5 /* CreateMarkerViewController.m */,
 			);
 			path = UIViewControllers;
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 				33A700261777FCCA006E3F8B /* User.m in Sources */,
 				33A700291777FCCA006E3F8B /* Comment.m in Sources */,
 				33953C32177BC22F0032FE6D /* ServerController.m in Sources */,
+				77C409FE177DE8B500E31AB5 /* CreateMarkerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

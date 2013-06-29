@@ -75,13 +75,13 @@ static NSString * const createPinTitle = @"Create new marker";
 - (void)dropPinButtonTapped:(id)sender; {
     if (createPin == nil) {
         createPin = [[MKPointAnnotation  alloc] init];
-        createPin.coordinate = self.currentLocation.coordinate;
+        createPin.coordinate = mapView.centerCoordinate;
         createPin.title = createPinTitle;
         createPin.subtitle = @"drag pin to desired location";
         [mapView addAnnotation:createPin];
         [mapView selectAnnotation:createPin animated:YES];
     } else {
-        createPin.coordinate = self.currentLocation.coordinate;
+        createPin.coordinate = mapView.centerCoordinate;
     }
 }
 
@@ -96,7 +96,7 @@ static NSString * const createPinTitle = @"Create new marker";
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         annotationView.draggable = YES;
-        
+
         return annotationView;
     }
     return nil;

@@ -2,7 +2,7 @@
 //  BoxSubZone.h
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @interface BoxSubZone : SubZone
 
+@property (nonatomic, retain) NSNumber * bottomRightLatitude;
+@property (nonatomic, retain) NSNumber * bottomRightLongitude;
 @property (nonatomic, retain) NSNumber * topLeftLatitude;
 @property (nonatomic, retain) NSNumber * topLeftLongitude;
-@property (nonatomic, retain) NSNumber * bottomRightLongitude;
-@property (nonatomic, retain) NSNumber * bottomRightLatitude;
 
 @end

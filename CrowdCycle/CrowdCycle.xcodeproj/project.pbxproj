@@ -22,15 +22,15 @@
 		333500A317615AA100291F0F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009E17615AA100291F0F /* MobileCoreServices.framework */; };
 		333500A417615AA100291F0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3335009F17615AA100291F0F /* Security.framework */; };
 		333500A517615AA100291F0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333500A017615AA100291F0F /* SystemConfiguration.framework */; };
+		333E33341783DB9400EB55DD /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33331783DB9400EB55DD /* Filter.m */; };
+		333E333A1783DB9500EB55DD /* CircleSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33391783DB9500EB55DD /* CircleSubZone.m */; };
+		333E333D1783DB9500EB55DD /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E333C1783DB9500EB55DD /* Comment.m */; };
+		333E33401783DB9500EB55DD /* SubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E333F1783DB9500EB55DD /* SubZone.m */; };
+		333E33431783DB9600EB55DD /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33421783DB9600EB55DD /* Subscription.m */; };
+		333E33461783DB9600EB55DD /* BoxSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33451783DB9600EB55DD /* BoxSubZone.m */; };
+		333E33491783DB9600EB55DD /* Marker.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33481783DB9600EB55DD /* Marker.m */; };
+		333E334C1783DB9600EB55DD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E334B1783DB9600EB55DD /* User.m */; };
 		33953C32177BC22F0032FE6D /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33953C31177BC22F0032FE6D /* ServerController.m */; };
-		33A700141777FCC8006E3F8B /* Marker.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700131777FCC8006E3F8B /* Marker.m */; };
-		33A700171777FCC9006E3F8B /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700161777FCC9006E3F8B /* Filter.m */; };
-		33A7001A1777FCC9006E3F8B /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700191777FCC9006E3F8B /* Subscription.m */; };
-		33A7001D1777FCC9006E3F8B /* BoxSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7001C1777FCC9006E3F8B /* BoxSubZone.m */; };
-		33A700201777FCC9006E3F8B /* CircleSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A7001F1777FCC9006E3F8B /* CircleSubZone.m */; };
-		33A700231777FCCA006E3F8B /* SubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700221777FCC9006E3F8B /* SubZone.m */; };
-		33A700261777FCCA006E3F8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700251777FCCA006E3F8B /* User.m */; };
-		33A700291777FCCA006E3F8B /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A700281777FCCA006E3F8B /* Comment.m */; };
 		33A7FFF51777F676006E3F8B /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A7FFEC1777F64E006E3F8B /* libRestKit.a */; };
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
 		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
@@ -100,25 +100,25 @@
 		3335009E17615AA100291F0F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		3335009F17615AA100291F0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		333500A017615AA100291F0F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		333E33321783DB9400EB55DD /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		333E33331783DB9400EB55DD /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		333E33381783DB9500EB55DD /* CircleSubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSubZone.h; sourceTree = "<group>"; };
+		333E33391783DB9500EB55DD /* CircleSubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSubZone.m; sourceTree = "<group>"; };
+		333E333B1783DB9500EB55DD /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		333E333C1783DB9500EB55DD /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		333E333E1783DB9500EB55DD /* SubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubZone.h; sourceTree = "<group>"; };
+		333E333F1783DB9500EB55DD /* SubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubZone.m; sourceTree = "<group>"; };
+		333E33411783DB9600EB55DD /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
+		333E33421783DB9600EB55DD /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
+		333E33441783DB9600EB55DD /* BoxSubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSubZone.h; sourceTree = "<group>"; };
+		333E33451783DB9600EB55DD /* BoxSubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSubZone.m; sourceTree = "<group>"; };
+		333E33471783DB9600EB55DD /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
+		333E33481783DB9600EB55DD /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marker.m; sourceTree = "<group>"; };
+		333E334A1783DB9600EB55DD /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		333E334B1783DB9600EB55DD /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		33953C30177BC22F0032FE6D /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerController.h; sourceTree = "<group>"; };
 		33953C31177BC22F0032FE6D /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerController.m; sourceTree = "<group>"; };
 		33953C33177BC3500032FE6D /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
-		33A700121777FCC8006E3F8B /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
-		33A700131777FCC8006E3F8B /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marker.m; sourceTree = "<group>"; };
-		33A700151777FCC9006E3F8B /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
-		33A700161777FCC9006E3F8B /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
-		33A700181777FCC9006E3F8B /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
-		33A700191777FCC9006E3F8B /* Subscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subscription.m; sourceTree = "<group>"; };
-		33A7001B1777FCC9006E3F8B /* BoxSubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxSubZone.h; sourceTree = "<group>"; };
-		33A7001C1777FCC9006E3F8B /* BoxSubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxSubZone.m; sourceTree = "<group>"; };
-		33A7001E1777FCC9006E3F8B /* CircleSubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSubZone.h; sourceTree = "<group>"; };
-		33A7001F1777FCC9006E3F8B /* CircleSubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSubZone.m; sourceTree = "<group>"; };
-		33A700211777FCC9006E3F8B /* SubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubZone.h; sourceTree = "<group>"; };
-		33A700221777FCC9006E3F8B /* SubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubZone.m; sourceTree = "<group>"; };
-		33A700241777FCCA006E3F8B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		33A700251777FCCA006E3F8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		33A700271777FCCA006E3F8B /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		33A700281777FCCA006E3F8B /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		33A7FFE41777F64D006E3F8B /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		33A7FFF81777F70D006E3F8B /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -219,22 +219,22 @@
 		333500701761576500291F0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				33A700121777FCC8006E3F8B /* Marker.h */,
-				33A700131777FCC8006E3F8B /* Marker.m */,
-				33A700151777FCC9006E3F8B /* Filter.h */,
-				33A700161777FCC9006E3F8B /* Filter.m */,
-				33A700181777FCC9006E3F8B /* Subscription.h */,
-				33A700191777FCC9006E3F8B /* Subscription.m */,
-				33A7001B1777FCC9006E3F8B /* BoxSubZone.h */,
-				33A7001C1777FCC9006E3F8B /* BoxSubZone.m */,
-				33A7001E1777FCC9006E3F8B /* CircleSubZone.h */,
-				33A7001F1777FCC9006E3F8B /* CircleSubZone.m */,
-				33A700211777FCC9006E3F8B /* SubZone.h */,
-				33A700221777FCC9006E3F8B /* SubZone.m */,
-				33A700241777FCCA006E3F8B /* User.h */,
-				33A700251777FCCA006E3F8B /* User.m */,
-				33A700271777FCCA006E3F8B /* Comment.h */,
-				33A700281777FCCA006E3F8B /* Comment.m */,
+				333E33321783DB9400EB55DD /* Filter.h */,
+				333E33331783DB9400EB55DD /* Filter.m */,
+				333E33381783DB9500EB55DD /* CircleSubZone.h */,
+				333E33391783DB9500EB55DD /* CircleSubZone.m */,
+				333E333B1783DB9500EB55DD /* Comment.h */,
+				333E333C1783DB9500EB55DD /* Comment.m */,
+				333E333E1783DB9500EB55DD /* SubZone.h */,
+				333E333F1783DB9500EB55DD /* SubZone.m */,
+				333E33411783DB9600EB55DD /* Subscription.h */,
+				333E33421783DB9600EB55DD /* Subscription.m */,
+				333E33441783DB9600EB55DD /* BoxSubZone.h */,
+				333E33451783DB9600EB55DD /* BoxSubZone.m */,
+				333E33471783DB9600EB55DD /* Marker.h */,
+				333E33481783DB9600EB55DD /* Marker.m */,
+				333E334A1783DB9600EB55DD /* User.h */,
+				333E334B1783DB9600EB55DD /* User.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -444,16 +444,16 @@
 				77F53BBF177791BD007FFD3E /* RegisterViewController.m in Sources */,
 				77F53BC2177793FB007FFD3E /* ProfileViewController.m in Sources */,
 				33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */,
-				33A700141777FCC8006E3F8B /* Marker.m in Sources */,
-				33A700171777FCC9006E3F8B /* Filter.m in Sources */,
-				33A7001A1777FCC9006E3F8B /* Subscription.m in Sources */,
-				33A7001D1777FCC9006E3F8B /* BoxSubZone.m in Sources */,
-				33A700201777FCC9006E3F8B /* CircleSubZone.m in Sources */,
-				33A700231777FCCA006E3F8B /* SubZone.m in Sources */,
-				33A700261777FCCA006E3F8B /* User.m in Sources */,
-				33A700291777FCCA006E3F8B /* Comment.m in Sources */,
 				33953C32177BC22F0032FE6D /* ServerController.m in Sources */,
 				77C409FE177DE8B500E31AB5 /* CreateMarkerViewController.m in Sources */,
+				333E33341783DB9400EB55DD /* Filter.m in Sources */,
+				333E333A1783DB9500EB55DD /* CircleSubZone.m in Sources */,
+				333E333D1783DB9500EB55DD /* Comment.m in Sources */,
+				333E33401783DB9500EB55DD /* SubZone.m in Sources */,
+				333E33431783DB9600EB55DD /* Subscription.m in Sources */,
+				333E33461783DB9600EB55DD /* BoxSubZone.m in Sources */,
+				333E33491783DB9600EB55DD /* Marker.m in Sources */,
+				333E334C1783DB9600EB55DD /* User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

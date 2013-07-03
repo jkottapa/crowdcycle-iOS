@@ -3,6 +3,7 @@
 #import "ServerController.h"
 #import "User.h"
 #import "Marker.h"
+#import "Comment.h"
 #import "SynthesizeSingleton.h"
 
 @interface ServerController (Private)
@@ -28,6 +29,41 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
 
 #pragma mark - Methods
 
+- (void)deleteUser:(User *)aUser delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aUser
+                        path:[NSString stringWithFormat:@"users/delete/%@", aUser.userID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)getUserDetails:(User *)aUser delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObjectsAtPath:[NSString stringWithFormat:@"users/details/%@", aUser.userID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)editUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aUser
+                        path:[NSString stringWithFormat:@"users/edit/%@", aUser.userID]
+                  parameters:[NSDictionary dictionaryWithObjectsAndKeys:aPassword, @"PSWD", nil]
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
 - (void)createUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate; {
   [_objectManager postObject:aUser
                         path:@"users/create"
@@ -39,12 +75,105 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
                      }];
   
-// Add it to the appropriate controller later
+//  // Add it to the appropriate controller later
 //  ServerController * serverController = [ServerController sharedServerController];
 //  User * user = (User *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
-//  user.email = @"test@test.ca";
-//  user.name = @"Test User";
+//  user.email = @"test2@test.ca";
+//  user.name = @"Test User 2";
 //  [serverController createUser:user withPassword:@"testing123" delegate:self];
+}
+
+- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObjectsAtPath:@"markers/list"
+                        parameters:nil
+                           success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                             NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                           }
+                           failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                             NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                           }];
+}
+
+- (void)editMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aMarker
+                        path:[NSString stringWithFormat:@"markers/edit/%@", aMarker.markerID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)createMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aMarker
+                        path:@"markers/create"
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)deleteMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aMarker
+                        path:[NSString stringWithFormat:@"markers/delete/%@", aMarker.markerID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)getMarkerDetails:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObjectsAtPath:[NSString stringWithFormat:@"markers/detail/%@", aMarker.markerID]
+                        parameters:nil
+                           success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                             NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                           }
+                           failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                             NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                           }];
+}
+
+- (void)deleteComment:(Comment *)aComment delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aComment
+                        path:[NSString stringWithFormat:@"comments/delete/%@", aComment.commentID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
+}
+
+- (void)getCommentsForMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObjectsAtPath:[NSString stringWithFormat:@"comments/list/%@", aMarker.markerID]
+                        parameters:nil
+                           success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                             NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                           }
+                           failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                             NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                           }];
+}
+
+- (void)createComment:(Comment *)aComment forMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager postObject:aComment
+                        path:[NSString stringWithFormat:@"comments/create/%@", aMarker.markerID]
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                     }];
 }
 
 @end
@@ -77,7 +206,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;
   
   RKEntityMapping * userMapping = [RKEntityMapping mappingForEntityForName:@"User" inManagedObjectStore:managedObjectStore];
-  [userMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"dateJoined", @"dateJoined", @"name", @"name", @"email", @"email", @"userID", @"userID", nil]];
+  [userMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"dateJoined", @"dateJoined", @"name", @"name", @"email", @"email", @"userID", @"uid", nil]];
   userMapping.identificationAttributes = [NSArray arrayWithObjects:@"userID", nil];
   
   RKEntityMapping * markerMapping = [RKEntityMapping mappingForEntityForName:@"Marker" inManagedObjectStore:managedObjectStore];
@@ -87,23 +216,28 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   RKObjectMapping * userSerialMapping = [RKObjectMapping requestMapping];
   [userSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"UNAME", @"name", @"EMAIL", @"email", nil]];
   
-  RKObjectMapping * markerSerialMapping = [markerMapping inverseMapping];
+  RKObjectMapping * markerSerialMapping = [RKObjectMapping requestMapping];
+  [markerSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"LAT", @"latitude", @"LON", @"longitude", @"MARKERTYPE", @"type", @"TITLE", @"title", @"DESCRIPTION", @"markerDescription", nil]];
+  
+  RKObjectMapping * commentSerialMapping = [RKObjectMapping requestMapping];
+  [commentSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"TEXT", @"text", nil]];
   
   [_objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:markerSerialMapping objectClass:[Marker class] rootKeyPath:nil]];
   [_objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:userSerialMapping objectClass:[User class] rootKeyPath:nil]];
+  [_objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:commentSerialMapping objectClass:[Comment class] rootKeyPath:nil]];
   
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/create" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/detail/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-    [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/vote/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/create" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/detail/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+    [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/edit/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/list" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/delete/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/vote/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/create" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/details/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/create" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/details/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/edit/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/list" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"users/delete/:id" keyPath:@"result.msg.rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 }
 
 @end

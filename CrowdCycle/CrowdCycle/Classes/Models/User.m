@@ -2,7 +2,7 @@
 //  User.m
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -14,10 +14,10 @@
 
 @implementation User
 
+@dynamic dateJoined;
 @dynamic email;
 @dynamic name;
 @dynamic userID;
-@dynamic dateJoined;
 @dynamic comments;
 @dynamic markers;
 @dynamic subscriptions;

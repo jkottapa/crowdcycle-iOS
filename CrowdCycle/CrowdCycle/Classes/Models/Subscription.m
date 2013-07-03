@@ -2,7 +2,7 @@
 //  Subscription.m
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -16,8 +16,8 @@
 
 @dynamic deviceToken;
 @dynamic subscriptionID;
-@dynamic owner;
 @dynamic filter;
+@dynamic owner;
 @dynamic subZone;
 
 @end

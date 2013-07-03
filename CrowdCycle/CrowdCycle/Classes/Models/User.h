@@ -2,7 +2,7 @@
 //  User.h
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface User : NSManagedObject
 
+@property (nonatomic, retain) NSDate * dateJoined;
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * userID;
-@property (nonatomic, retain) NSDate * dateJoined;
+@property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSSet *comments;
 @property (nonatomic, retain) NSSet *markers;
 @property (nonatomic, retain) NSSet *subscriptions;

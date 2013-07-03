@@ -2,7 +2,7 @@
 //  Marker.m
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -13,16 +13,16 @@
 
 @implementation Marker
 
-@dynamic latitude;
-@dynamic type;
 @dynamic dateCreated;
 @dynamic dateModified;
-@dynamic upVotes;
 @dynamic downVotes;
-@dynamic title;
+@dynamic latitude;
+@dynamic longitude;
 @dynamic markerDescription;
 @dynamic markerID;
-@dynamic longitude;
+@dynamic title;
+@dynamic type;
+@dynamic upVotes;
 @dynamic comments;
 @dynamic owner;
 

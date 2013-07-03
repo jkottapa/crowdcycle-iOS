@@ -12,7 +12,7 @@
         <attribute name="radius" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="Comment" representedClassName="Comment" syncable="YES">
-        <attribute name="commentID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="commentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="marker" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Marker" inverseName="comments" inverseEntity="Marker" syncable="YES"/>
@@ -30,7 +30,7 @@
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="markerDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="markerID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="markerID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upVotes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -39,7 +39,7 @@
     </entity>
     <entity name="Subscription" representedClassName="Subscription" syncable="YES">
         <attribute name="deviceToken" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="subscriptionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="subscriptionID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="filter" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Filter" inverseName="subscription" inverseEntity="Filter" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="subscriptions" inverseEntity="User" syncable="YES"/>
         <relationship name="subZone" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SubZone" inverseName="subscription" inverseEntity="SubZone" syncable="YES"/>
@@ -53,7 +53,7 @@
         <attribute name="dateJoined" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
         <relationship name="markers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Marker" inverseName="owner" inverseEntity="Marker" syncable="YES"/>
         <relationship name="subscriptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subscription" inverseName="owner" inverseEntity="Subscription" syncable="YES"/>

@@ -2,7 +2,7 @@
 //  Comment.m
 //  CrowdCycle
 //
-//  Created by Daniel MacKenzie on 2013-06-24.
+//  Created by Daniel MacKenzie on 2013-07-03.
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @implementation Comment
 
-@dynamic text;
-@dynamic dateCreated;
 @dynamic commentID;
-@dynamic user;
+@dynamic dateCreated;
+@dynamic text;
 @dynamic marker;
+@dynamic user;
 
 @end

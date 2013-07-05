@@ -27,6 +27,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    [_loginButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+    [_loginButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+    [_registerButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+    [_registerButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning

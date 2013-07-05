@@ -19,6 +19,12 @@
 
 - (void)viewDidLoad; {
   [super viewDidLoad];
+  UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  [_registerButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_registerButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
 }
 
 #pragma mark - Methods

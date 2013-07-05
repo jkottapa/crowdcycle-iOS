@@ -33,7 +33,7 @@ static NSString * const createPinTitle = @"Create new marker";
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startMonitoringSignificantLocationChanges];
-    [mapView setDelegate:self];
+    [_mapView setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +49,7 @@ static NSString * const createPinTitle = @"Create new marker";
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation; {
     self.currentLocation = newLocation;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance([newLocation coordinate], 1000, 1000);
-    [mapView setRegion:region animated:YES];
+    [_mapView setRegion:region animated:YES];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error; {
@@ -73,20 +73,20 @@ static NSString * const createPinTitle = @"Create new marker";
 }
 
 - (void)dropPinButtonTapped:(id)sender; {
-    if (createPin == nil) {
-        createPin = [[MKPointAnnotation  alloc] init];
-        createPin.coordinate = mapView.centerCoordinate;
-        createPin.title = createPinTitle;
-        createPin.subtitle = @"drag pin to desired location";
-        [mapView addAnnotation:createPin];
-        [mapView selectAnnotation:createPin animated:YES];
+    if (_createPin == nil) {
+        _createPin = [[MKPointAnnotation  alloc] init];
+        _createPin.coordinate = _mapView.centerCoordinate;
+        _createPin.title = createPinTitle;
+        _createPin.subtitle = @"drag pin to desired location";
+        [_mapView addAnnotation:_createPin];
+        [_mapView selectAnnotation:_createPin animated:YES];
     } else {
-        createPin.coordinate = mapView.centerCoordinate;
+        _createPin.coordinate = _mapView.centerCoordinate;
     }
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)fromMapView viewForAnnotation:(id <MKAnnotation>)annotation; {
-    if ([[annotation title] isEqualToString:createPinTitle]) {
+    if (annotation == _createPin) {
         MKAnnotationView *annotationView = [fromMapView dequeueReusableAnnotationViewWithIdentifier:@"marker"];
         if(!annotationView) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"marker"];
@@ -104,8 +104,17 @@ static NSString * const createPinTitle = @"Create new marker";
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control; {
     // Go to edit view
-    if ([[view.annotation title] isEqualToString:createPinTitle]) {
+    if (view.annotation == _createPin) {
         [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender; {
+    if ([[segue identifier] isEqualToString:@"CreateMarkerViewController"])
+    {
+        // Get reference to the destination view controller
+        CreateMarkerViewController *vc = [segue destinationViewController];
+        vc.createLocation = _createPin.coordinate;
     }
 }
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerController.h"
 
-@interface LoginViewController : UIViewController {
+@interface LoginViewController : UIViewController <ServerControllerDelegate> {
     IBOutlet UITextField * _emailTextField;
     IBOutlet UITextField * _passwordTextField;
     IBOutlet UIButton * _loginButton;

@@ -12,6 +12,7 @@
 
 @optional
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
+- (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError;
 
 @end
@@ -29,7 +30,9 @@
 - (void)getUserDetails:(User *)aUser delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)editUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)createUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
+- (void)loginWithEmail:(NSString *)aEmail password:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 
+- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)editMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)createMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)deleteMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;

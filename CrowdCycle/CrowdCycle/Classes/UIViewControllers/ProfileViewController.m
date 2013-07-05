@@ -7,6 +7,9 @@
 //
 
 #import "ProfileViewController.h"
+#import "User.h"
+#import "AppDelegate.h"
+#import "ServerController.h"
 
 @interface ProfileViewController ()
 
@@ -16,38 +19,41 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
+  }
+  return self;
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  User * user = [AppDelegate appDelegate].currrentUser;
+  _nameTextField.text = user.name;
+  _emailTextField.text = user.email;
 	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)viewTapped:(id)sender; {
-    [self dismissKeyboard];
+  [self dismissKeyboard];
 }
 
 - (IBAction)updateButtonPressed:(id)sender; {
-    [self dismissKeyboard];
+  [self dismissKeyboard];
 }
 
 - (void)dismissKeyboard; {
-    [_emailTextField endEditing:YES];
-    [_nameTextField endEditing:YES];
-    [_newPasswordTextField endEditing:YES];
-    [_confirmPasswordTextField endEditing:YES];
-    [_currentPasswordTextField endEditing:YES];
+  [_emailTextField endEditing:YES];
+  [_nameTextField endEditing:YES];
+  [_newPasswordTextField endEditing:YES];
+  [_confirmPasswordTextField endEditing:YES];
+  [_currentPasswordTextField endEditing:YES];
 }
 @end

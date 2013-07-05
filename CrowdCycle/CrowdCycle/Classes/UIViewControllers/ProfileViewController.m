@@ -33,6 +33,12 @@
   _nameTextField.text = user.name;
   _emailTextField.text = user.email;
 	// Do any additional setup after loading the view.
+    UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+    [_updateButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+    [_updateButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning

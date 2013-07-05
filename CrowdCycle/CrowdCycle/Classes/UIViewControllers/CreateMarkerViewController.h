@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface CreateMarkerViewController : UIViewController
-
+@interface CreateMarkerViewController : UIViewController {
+  IBOutletCollection(UIButton) NSArray * _typeButtons;
+  IBOutlet UIButton * _saveButton;
+  IBOutlet UITextField * _titleTextField;
+  IBOutlet UITextField * _descriptionTextField;
+  NSString * _markerType;
+}
+- (IBAction)typeButtonTapped:(id)sender;
+- (IBAction)saveButtonTapped:(id)sender;
+- (IBAction)viewTapped:(id)sender;
+@property (nonatomic) CLLocationCoordinate2D createLocation;
 @end

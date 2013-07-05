@@ -12,6 +12,7 @@
 
 @optional
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
+- (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError;
 
 @end
 

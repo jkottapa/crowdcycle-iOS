@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerController.h"
 
-@interface RegisterViewController : UIViewController {
+@interface RegisterViewController : UIViewController <ServerControllerDelegate> {
     IBOutlet UITextField * _nameTextField;
     IBOutlet UITextField * _emailTextField;
     IBOutlet UITextField * _passwordTextField;

@@ -70,17 +70,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:[NSDictionary dictionaryWithObjectsAndKeys:aPassword, @"PSWD", nil]
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didCreateUser:)]){
+                         [aDelegate serverController:self didCreateUser:mappingResult.firstObject];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
                      }];
-  
-//  // Add it to the appropriate controller later
-//  ServerController * serverController = [ServerController sharedServerController];
-//  User * user = (User *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
-//  user.email = @"test2@test.ca";
-//  user.name = @"Test User 2";
-//  [serverController createUser:user withPassword:@"testing123" delegate:self];
 }
 
 - (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate; {

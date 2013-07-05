@@ -1,75 +1,85 @@
-//
 //  RegisterViewController.m
-//  CrowdCycle
-//
-//  Created by Yanwei Xiao on 6/23/13.
-//  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
-//
 
 #import "RegisterViewController.h"
-
-@interface RegisterViewController ()
-
-@end
+#import "User.h"
+#import "AppDelegate.h"
 
 @implementation RegisterViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+#pragma mark - Init
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil; {
+  if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])){
+
+  }
+  return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+#pragma mark - View LifeStyle
+
+- (void)viewDidLoad; {
+  [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Methods
 
 - (IBAction)registerButtonTapped:(id)sender; {
-    NSString * errorMsg = nil;
-    
-    if ([_emailTextField.text isEqualToString:@""]) {
-        errorMsg = @"Please enter an email";
-        [self dismissKeyboard];
-    } else if ([_nameTextField.text isEqualToString:@""]) {
-        errorMsg = @"Please enter a name";
-        [self dismissKeyboard];
-    } else if ([_passwordTextField.text isEqualToString:@""]) {
-        errorMsg = @"Please enter a password";
-        [self dismissKeyboard];
-    } else if (![_confirmPasswordTextField.text isEqualToString:_passwordTextField.text]) {
-        errorMsg = @"Passwords do not match";
-        [self dismissKeyboard];
-    }
-    
-    if(errorMsg != nil){
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
-        [alertView show];
-    } else {
-        [self dismissKeyboard];
-        self.view.userInteractionEnabled = NO;
-        [_activityIndicator startAnimating];
-    }
+  NSString * errorMsg = nil;
+  
+  if ([_emailTextField.text isEqualToString:@""]) {
+    errorMsg = @"Please enter an email";
+    [self dismissKeyboard];
+  } else if ([_nameTextField.text isEqualToString:@""]) {
+    errorMsg = @"Please enter a name";
+    [self dismissKeyboard];
+  } else if ([_passwordTextField.text isEqualToString:@""]) {
+    errorMsg = @"Please enter a password";
+    [self dismissKeyboard];
+  } else if (![_confirmPasswordTextField.text isEqualToString:_passwordTextField.text]) {
+    errorMsg = @"Passwords do not match";
+    [self dismissKeyboard];
+  }
+  
+  if(errorMsg != nil){
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+  } else {
+    [self dismissKeyboard];
+    self.view.userInteractionEnabled = NO;
+    [_activityIndicator startAnimating];
+
+    ServerController * serverController = [ServerController sharedServerController];
+    User * user = (User *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"User" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
+    user.email = _emailTextField.text;
+    user.name = _nameTextField.text;
+    [serverController createUser:user withPassword:_passwordTextField.text delegate:self];
+  }
 }
 
 - (IBAction)viewTapped:(id)sender; {
-    [self dismissKeyboard];
+  [self dismissKeyboard];
 }
 
 - (void)dismissKeyboard; {
-    [_emailTextField endEditing:YES];
-    [_nameTextField endEditing:YES];
-    [_passwordTextField endEditing:YES];
-    [_confirmPasswordTextField endEditing:YES];
+  [_emailTextField endEditing:YES];
+  [_nameTextField endEditing:YES];
+  [_passwordTextField endEditing:YES];
+  [_confirmPasswordTextField endEditing:YES];
 }
+
+#pragma mark - ServerControllerDelegate Methods
+
+- (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser; {
+  NSLog(@"User: %@", aUser);
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  [AppDelegate appDelegate].currrentUser = aUser;
+  [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+}
+
 @end

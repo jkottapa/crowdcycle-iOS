@@ -62,4 +62,10 @@
   [_confirmPasswordTextField endEditing:YES];
   [_currentPasswordTextField endEditing:YES];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField; {
+  [textField resignFirstResponder];
+  return YES;
+}
+
 @end

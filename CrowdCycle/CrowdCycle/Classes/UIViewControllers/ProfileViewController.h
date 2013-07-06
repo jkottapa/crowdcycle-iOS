@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController {
+@interface ProfileViewController : UIViewController <UITextFieldDelegate>{
     IBOutlet UITextField * _nameTextField;
     IBOutlet UITextField * _emailTextField;
     IBOutlet UITextField * _currentPasswordTextField;

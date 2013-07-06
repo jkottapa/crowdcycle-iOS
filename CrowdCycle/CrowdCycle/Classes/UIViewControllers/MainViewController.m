@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "AppDelegate.h"
 #import "ServerController.h"
+#import "CreateMarkerViewController.h"
 
 @interface MainViewController ()
 
@@ -81,15 +82,20 @@ static NSString * const createPinTitle = @"Create new marker";
 }
 
 - (void)dropPinButtonTapped:(id)sender; {
-  if (_createPin == nil) {
-    _createPin = [[MKPointAnnotation  alloc] init];
-    _createPin.coordinate = _mapView.centerCoordinate;
-    _createPin.title = createPinTitle;
-    _createPin.subtitle = @"drag pin to desired location";
-    [_mapView addAnnotation:_createPin];
-    [_mapView selectAnnotation:_createPin animated:YES];
-  } else {
-    _createPin.coordinate = _mapView.centerCoordinate;
+  if([AppDelegate appDelegate].currrentUser){
+    if (_createPin == nil) {
+      _createPin = [[MKPointAnnotation  alloc] init];
+      _createPin.coordinate = _mapView.centerCoordinate;
+      _createPin.title = createPinTitle;
+      _createPin.subtitle = @"drag pin to desired location";
+      [_mapView addAnnotation:_createPin];
+      [_mapView selectAnnotation:_createPin animated:YES];
+    } else {
+      _createPin.coordinate = _mapView.centerCoordinate;
+    }
+  }
+  else{
+    [self performSegueWithIdentifier:@"LoginViewController" sender:self];
   }
 }
 

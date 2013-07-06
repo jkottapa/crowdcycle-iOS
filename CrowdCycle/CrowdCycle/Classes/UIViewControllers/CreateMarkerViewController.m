@@ -7,6 +7,7 @@
 //
 
 #import "CreateMarkerViewController.h"
+#import "Marker.h"
 
 @interface CreateMarkerViewController ()
 
@@ -75,6 +76,20 @@
   if(errorMsg != nil){
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [alertView show];
+  } else {
+    [self dismissKeyboard];
+    self.view.userInteractionEnabled = NO;
+    [_activityIndicator startAnimating];
+    
+    ServerController * serverController = [ServerController sharedServerController];
+    Marker * marker = (Marker *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Marker" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
+    
+    marker.latitude = [NSNumber numberWithDouble:_createLocation.latitude];
+    marker.longitude = [NSNumber numberWithDouble:_createLocation.longitude];
+    marker.markerDescription = _descriptionTextField.text;
+    marker.title = _titleTextField.text;
+    marker.type = _markerType;
+    [serverController createMarker:marker delegate:self];
   }
 }
 
@@ -85,6 +100,18 @@
 - (void)dismissKeyboard; {
   [_titleTextField endEditing:YES];
   [_descriptionTextField endEditing:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField; {
+  [textField resignFirstResponder];
+  return YES;
+}
+
+#pragma mark - ServerControllerDelegate Methods
+
+- (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
 }
 
 @end

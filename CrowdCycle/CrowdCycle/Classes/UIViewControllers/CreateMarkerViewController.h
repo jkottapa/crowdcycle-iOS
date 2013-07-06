@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ServerController.h"
 
-@interface CreateMarkerViewController : UIViewController {
+@interface CreateMarkerViewController : UIViewController <UITextFieldDelegate, ServerControllerDelegate>{
   IBOutletCollection(UIButton) NSArray * _typeButtons;
   IBOutlet UIButton * _saveButton;
   IBOutlet UITextField * _titleTextField;
   IBOutlet UITextField * _descriptionTextField;
+  IBOutlet UIActivityIndicatorView * _activityIndicator;
   NSString * _markerType;
 }
 - (IBAction)typeButtonTapped:(id)sender;

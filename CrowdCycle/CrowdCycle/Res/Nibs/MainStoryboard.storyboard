@@ -60,18 +60,30 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RT9-Fe-3nP">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TCF-es-54i" id="0Xx-cu-Tn7"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f90-4m-WGG">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TCF-es-54i" id="mjy-2c-76x"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MaM-ph-W59">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TCF-es-54i" id="4FF-Hj-GBS"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2IX-QL-sNI">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TCF-es-54i" id="TBh-mF-bwa"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oY4-wr-6mb">
                                 <constraints>
@@ -181,22 +193,37 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uE1-fw-gUq">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dWj-bb-f0x" id="IPe-AI-h4p"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vz-Vv-Rr5">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dWj-bb-f0x" id="oFI-Yi-hSE"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9a4-qc-7Gs">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dWj-bb-f0x" id="9aG-Hd-81I"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEv-aF-AX0">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dWj-bb-f0x" id="K4N-qh-v6Z"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8C-45-kE8">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dWj-bb-f0x" id="nxV-6s-PQa"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvb-lb-Dte">
                                 <constraints>
@@ -281,8 +308,8 @@
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wea-Yk-WYG">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="283" id="M5H-qW-fQ3"/>
                                     <constraint firstAttribute="height" constant="28" id="fsh-yU-Ps2"/>
+                                    <constraint firstAttribute="width" constant="283" id="vRL-WH-GV1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -306,18 +333,24 @@
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijw-0x-DZZ">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="x6I-Vy-UVi" id="0Zi-tS-DMK"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qI6-5v-iVK">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="x6I-Vy-UVi" id="oLZ-0N-QB1"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ZE-C6-nEQ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="j4F-WV-8D4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                <state key="normal" title="Points of Interest">
+                                <state key="normal" title="pointOfIntrest">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -392,11 +425,15 @@
                                     <action selector="saveButtonTapped:" destination="x6I-Vy-UVi" eventType="touchUpInside" id="quO-8u-NsK"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mpG-74-j8O">
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="uF3-kw-Fea" firstAttribute="top" secondItem="6Mr-SG-oHd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0Wu-bx-y1e"/>
+                            <constraint firstItem="mpG-74-j8O" firstAttribute="top" secondItem="Jwd-4d-fuE" secondAttribute="top" constant="163" id="1yb-Yc-l7H"/>
                             <constraint firstItem="uF3-kw-Fea" firstAttribute="leading" secondItem="Jwd-4d-fuE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7OZ-2W-vhv"/>
                             <constraint firstAttribute="trailing" secondItem="fzU-Eq-8iE" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Adw-RK-94k"/>
                             <constraint firstItem="pjn-fQ-zjQ" firstAttribute="leading" secondItem="Jwd-4d-fuE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="DAW-Ee-Itc"/>
@@ -412,6 +449,7 @@
                             <constraint firstItem="pjn-fQ-zjQ" firstAttribute="trailing" secondItem="wea-Yk-WYG" secondAttribute="trailing" type="default" id="ZbZ-Bf-Mgf"/>
                             <constraint firstItem="pjn-fQ-zjQ" firstAttribute="top" secondItem="ijw-0x-DZZ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aLc-WH-dUR"/>
                             <constraint firstItem="fzU-Eq-8iE" firstAttribute="top" secondItem="OCE-dF-bgD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="dHd-0y-DME"/>
+                            <constraint firstItem="mpG-74-j8O" firstAttribute="centerX" secondItem="2ZE-C6-nEQ" secondAttribute="centerX" type="default" id="eBN-2U-uEy"/>
                             <constraint firstItem="qI6-5v-iVK" firstAttribute="leading" secondItem="Jwd-4d-fuE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ejx-C0-Kbo"/>
                             <constraint firstAttribute="trailing" secondItem="uF3-kw-Fea" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ftV-ev-lCt"/>
                             <constraint firstItem="qI6-5v-iVK" firstAttribute="top" secondItem="pjn-fQ-zjQ" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="hNJ-aF-gXf"/>
@@ -432,6 +470,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Marker" id="6AV-Hz-c02"/>
                     <connections>
+                        <outlet property="_activityIndicator" destination="mpG-74-j8O" id="KtF-XN-4TJ"/>
                         <outlet property="_descriptionTextField" destination="qI6-5v-iVK" id="l1A-hp-9iu"/>
                         <outlet property="_saveButton" destination="uF3-kw-Fea" id="H1c-Kt-MwB"/>
                         <outlet property="_titleTextField" destination="ijw-0x-DZZ" id="9ue-fT-y3n"/>
@@ -461,10 +500,16 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSE-5g-F7I">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wbI-dh-ecD" id="AXq-8f-gWF"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUz-LA-6KU">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wbI-dh-ecD" id="nVt-0P-zuv"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVT-5O-8UH">
                                 <constraints>
@@ -563,6 +608,70 @@
             <point key="canvasLocation" x="130" y="166"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="CreateMarkerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateMarkerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="saveButtonTapped:"/>
+                <relationship kind="action" name="typeButtonTapped:"/>
+                <relationship kind="action" name="viewTapped:"/>
+                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="_descriptionTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_saveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_titleTextField" candidateClass="UITextField"/>
+                <relationship kind="outletCollection" name="_typeButtons" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonPressed:"/>
+                <relationship kind="action" name="viewTapped:"/>
+                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_registerButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="dropPinButtonTapped:"/>
+                <relationship kind="action" name="profileButtonTapped:"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ProfileViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="updateButtonPressed:"/>
+                <relationship kind="action" name="viewTapped:"/>
+                <relationship kind="outlet" name="_confirmPasswordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_currentPasswordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_newPasswordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_updateButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="RegisterViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="registerButtonTapped:"/>
+                <relationship kind="action" name="viewTapped:"/>
+                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="_confirmPasswordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_nameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_passwordTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="_registerButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

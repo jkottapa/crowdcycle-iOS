@@ -88,4 +88,10 @@
   [_activityIndicator stopAnimating];
   [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField; {
+  [textField resignFirstResponder];
+  return YES;
+}
+
 @end

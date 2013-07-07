@@ -56,7 +56,15 @@
     typeButton.alpha = .5;
   }
   sender.alpha = 1;
-  _markerType = sender.titleLabel.text;
+  if([sender.titleLabel.text isEqualToString:@"Point of Interest"]) {
+    _markerType = @"pointOfIntrest";
+  } else if ([sender.titleLabel.text isEqualToString:@"Physical Hazard"]) {
+    _markerType = @"physicalHazard";
+  } else if ([sender.titleLabel.text isEqualToString:@"People Hazard"]) {
+    _markerType = @"peopleHazard";
+  } else if ([sender.titleLabel.text isEqualToString:@"Caution"]) {
+    _markerType = @"caution";
+  }
 }
 
 - (IBAction)saveButtonTapped:(UIButton*)sender; {

@@ -105,10 +105,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                      }];
 }
 
-- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate; {
+- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate lat1:(NSNumber*)lat1 long1:(NSNumber*)long1 lat2:(NSNumber*)lat2 long2:(NSNumber*)long2; {
   [_objectManager getObjectsAtPath:@"markers/list"
-                        parameters:nil
+                        parameters:[NSDictionary dictionaryWithObjectsAndKeys:lat1, @"LAT1", long1, @"LON1", lat2, @"LAT2", long2, @"LON2", nil]
                            success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                             if([(id)aDelegate respondsToSelector:@selector(serverController:didGetMarkers:)]){
+                               [aDelegate serverController:self didGetMarkers:[mappingResult array]];
+                             }
                              NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
                            }
                            failure:^(RKObjectRequestOperation * operation, NSError * error) {

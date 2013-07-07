@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ServerController.h"
+#import "MarkerPin.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate>{
-    IBOutlet MKMapView * _mapView;
-    CLLocationManager * _locationManager;
-    MKPointAnnotation * _createPin;
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, ServerControllerDelegate>{
+  IBOutlet MKMapView * _mapView;
+  CLLocationManager * _locationManager;
+  MarkerPin * _createPin;
+  NSMutableDictionary * _pinsOnMap;
+  BOOL userLocated;
 }
+
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 

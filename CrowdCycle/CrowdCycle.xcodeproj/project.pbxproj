@@ -65,6 +65,7 @@
 		778734CC17865286006F4E5F /* whiteButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 778734AF17865286006F4E5F /* whiteButtonHighlight.png */; };
 		778734CD17865286006F4E5F /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 778734B017865286006F4E5F /* whiteButtonHighlight@2x.png */; };
 		77C409FE177DE8B500E31AB5 /* CreateMarkerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C409FD177DE8B500E31AB5 /* CreateMarkerViewController.m */; };
+		77D220871788F48100C710F4 /* MarkerPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 77D220861788F48100C710F4 /* MarkerPin.m */; };
 		77F53BB617778919007FFD3E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F53BB517778919007FFD3E /* MapKit.framework */; };
 		77F53BB917778F02007FFD3E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BB817778F02007FFD3E /* LoginViewController.m */; };
 		77F53BBF177791BD007FFD3E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77F53BBE177791BD007FFD3E /* RegisterViewController.m */; };
@@ -184,6 +185,8 @@
 		778734B017865286006F4E5F /* whiteButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		77C409FC177DE8B500E31AB5 /* CreateMarkerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMarkerViewController.h; sourceTree = "<group>"; };
 		77C409FD177DE8B500E31AB5 /* CreateMarkerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMarkerViewController.m; sourceTree = "<group>"; };
+		77D220851788F48100C710F4 /* MarkerPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkerPin.h; sourceTree = "<group>"; };
+		77D220861788F48100C710F4 /* MarkerPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkerPin.m; sourceTree = "<group>"; };
 		77F53BB517778919007FFD3E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		77F53BB717778F02007FFD3E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		77F53BB817778F02007FFD3E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -293,6 +296,8 @@
 				333E33481783DB9600EB55DD /* Marker.m */,
 				333E334A1783DB9600EB55DD /* User.h */,
 				333E334B1783DB9600EB55DD /* User.m */,
+				77D220851788F48100C710F4 /* MarkerPin.h */,
+				77D220861788F48100C710F4 /* MarkerPin.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -578,6 +583,7 @@
 				333E33461783DB9600EB55DD /* BoxSubZone.m in Sources */,
 				333E33491783DB9600EB55DD /* Marker.m in Sources */,
 				333E334C1783DB9600EB55DD /* User.m in Sources */,
+				77D220871788F48100C710F4 /* MarkerPin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

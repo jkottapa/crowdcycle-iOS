@@ -11,6 +11,7 @@
 @protocol ServerControllerDelegate
 
 @optional
+- (void)serverController:(ServerController *)serverController didGetMarkers:(NSArray *)aMarkers;
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError;
@@ -32,7 +33,7 @@
 - (void)createUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)loginWithEmail:(NSString *)aEmail password:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 
-- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate;
+- (void)getMarkersWithDelegate:(id<ServerControllerDelegate>)aDelegate lat1:(NSNumber*)lat1 long1:(NSNumber*)long1 lat2:(NSNumber*)lat2 long2:(NSNumber*)long2;
 - (void)editMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)createMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)deleteMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;

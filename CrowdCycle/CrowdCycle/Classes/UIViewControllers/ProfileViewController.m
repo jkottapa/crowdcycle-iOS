@@ -33,12 +33,14 @@
   _nameTextField.text = user.name;
   _emailTextField.text = user.email;
 	// Do any additional setup after loading the view.
-    UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
-                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    [_updateButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
-    [_updateButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  [_updateButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_updateButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  [_logoutButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_logoutButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,6 +57,13 @@
   [self dismissKeyboard];
 }
 
+- (IBAction)logoutButtonPressed:(id)sender; {
+  [self dismissKeyboard];
+  self.view.userInteractionEnabled = NO;
+  [_activityIndicator startAnimating];
+  [[ServerController sharedServerController] logout:self];
+}
+
 - (void)dismissKeyboard; {
   [_emailTextField endEditing:YES];
   [_nameTextField endEditing:YES];
@@ -68,4 +77,10 @@
   return YES;
 }
 
+- (void)serverController:(ServerController *)serverController didLogout:(bool)success {
+  [AppDelegate appDelegate].currrentUser = nil;
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  [self.navigationController popViewControllerAnimated:YES];
+}
 @end

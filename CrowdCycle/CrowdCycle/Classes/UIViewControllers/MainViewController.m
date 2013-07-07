@@ -36,6 +36,15 @@
   locationManager.delegate = self;
   [locationManager startMonitoringSignificantLocationChanges];
   [_mapView setDelegate:self];
+  
+  UIImage *buttonImage = [[UIImage imageNamed:@"blackButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blackButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  for (UIButton *typeButton in _typeButtons) {
+    [typeButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [typeButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+  }
 }
 
 - (void)didReceiveMemoryWarning
@@ -131,6 +140,8 @@
     } else {
       if ([((MarkerPin*)annotation).type isEqualToString:@"pointOfIntrest"]) {
         annotationView.pinColor = MKPinAnnotationColorGreen;
+      } else {
+        annotationView.pinColor = MKPinAnnotationColorRed;
       }
     }
     return annotationView;

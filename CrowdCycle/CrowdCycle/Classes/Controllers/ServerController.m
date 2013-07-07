@@ -83,6 +83,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didFailWithError:)]){
+                         [aDelegate serverController:self didFailWithError:error];
+                       }
+                     }];
+}
+
+- (void)logout:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObject:nil
+                        path:@"logout"
+                  parameters:nil
+                     success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                       NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didLogout:)]){
+                         [aDelegate serverController:self didLogout:YES];
+                       }
+                     }
+                     failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                       NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
                      }];
 }
 
@@ -102,6 +120,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didFailWithError:)]){
+                         [aDelegate serverController:self didFailWithError:error];
+                       }
                      }];
 }
 
@@ -225,6 +246,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
   _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
@@ -259,6 +281,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/vote/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"login" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"logout" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/create" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/details/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];

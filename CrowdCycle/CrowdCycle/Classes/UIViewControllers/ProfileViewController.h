@@ -7,17 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerController.h"
 
-@interface ProfileViewController : UIViewController <UITextFieldDelegate>{
-    IBOutlet UITextField * _nameTextField;
-    IBOutlet UITextField * _emailTextField;
-    IBOutlet UITextField * _currentPasswordTextField;
-    IBOutlet UITextField * _newPasswordTextField;
-    IBOutlet UITextField * _confirmPasswordTextField;
-    IBOutlet UIButton * _updateButton;
+@interface ProfileViewController : UIViewController <UITextFieldDelegate, ServerControllerDelegate>{
+  IBOutlet UITextField * _nameTextField;
+  IBOutlet UITextField * _emailTextField;
+  IBOutlet UITextField * _currentPasswordTextField;
+  IBOutlet UITextField * _newPasswordTextField;
+  IBOutlet UITextField * _confirmPasswordTextField;
+  IBOutlet UIButton * _updateButton;
+  IBOutlet UIButton * _logoutButton;
+  IBOutlet UIActivityIndicatorView * _activityIndicator;
 }
 
 - (IBAction)viewTapped:(id)sender;
 - (IBAction)updateButtonPressed:(id)sender;
+- (IBAction)logoutButtonPressed:(id)sender;
 
 @end

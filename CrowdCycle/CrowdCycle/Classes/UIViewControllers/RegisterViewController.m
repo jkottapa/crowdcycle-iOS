@@ -84,8 +84,12 @@
 }
 
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
-  self.view.userInteractionEnabled = YES;
-  [_activityIndicator stopAnimating];
+  if ([aError.localizedRecoverySuggestion rangeOfString:@"email already exists"].location != NSNotFound) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"That email address already exists" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+    [_activityIndicator stopAnimating];
+  }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField; {

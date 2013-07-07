@@ -14,6 +14,7 @@
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, MKMapViewDelegate, ServerControllerDelegate>{
   IBOutlet MKMapView * _mapView;
+  IBOutletCollection(UIButton) NSArray * _typeButtons;
   CLLocationManager * _locationManager;
   MarkerPin * _createPin;
   NSMutableDictionary * _pinsOnMap;

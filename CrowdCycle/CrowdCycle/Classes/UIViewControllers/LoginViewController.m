@@ -28,14 +28,14 @@
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
-                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    [_loginButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
-    [_loginButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
-    [_registerButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
-    [_registerButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  [_loginButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_loginButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  [_registerButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_registerButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,6 +87,15 @@
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
+  if ([aError.localizedRecoverySuggestion rangeOfString:@"Bad user/pass"].location != NSNotFound) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid email or password" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    self.view.userInteractionEnabled = YES;
+    [_activityIndicator stopAnimating];
+  }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField; {

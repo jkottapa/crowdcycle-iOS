@@ -35,6 +35,10 @@
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
 		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
 		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
+		777F18D5178DBD5100428068 /* type1.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D1178DBD5100428068 /* type1.png */; };
+		777F18D6178DBD5100428068 /* type2.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D2178DBD5100428068 /* type2.png */; };
+		777F18D7178DBD5100428068 /* type3.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D3178DBD5100428068 /* type3.png */; };
+		777F18D8178DBD5100428068 /* type4.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D4178DBD5100428068 /* type4.png */; };
 		778734B117865286006F4E5F /* blackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7787349417865286006F4E5F /* blackButton.png */; };
 		778734B217865286006F4E5F /* blackButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7787349517865286006F4E5F /* blackButton@2x.png */; };
 		778734B317865286006F4E5F /* blackButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 7787349617865286006F4E5F /* blackButtonHighlight.png */; };
@@ -154,6 +158,10 @@
 		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		777F18D1178DBD5100428068 /* type1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type1.png; sourceTree = "<group>"; };
+		777F18D2178DBD5100428068 /* type2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type2.png; sourceTree = "<group>"; };
+		777F18D3178DBD5100428068 /* type3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type3.png; sourceTree = "<group>"; };
+		777F18D4178DBD5100428068 /* type4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = type4.png; sourceTree = "<group>"; };
 		7787349417865286006F4E5F /* blackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackButton.png; sourceTree = "<group>"; };
 		7787349517865286006F4E5F /* blackButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackButton@2x.png"; sourceTree = "<group>"; };
 		7787349617865286006F4E5F /* blackButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackButtonHighlight.png; sourceTree = "<group>"; };
@@ -342,6 +350,7 @@
 		333500761761576500291F0F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				777F18D0178DBD5100428068 /* icons */,
 				7787349317865285006F4E5F /* buttons */,
 				333500771761576500291F0F /* Default-568h@2x.png */,
 				333500781761576500291F0F /* Default.png */,
@@ -395,6 +404,17 @@
 				33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		777F18D0178DBD5100428068 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				777F18D1178DBD5100428068 /* type1.png */,
+				777F18D2178DBD5100428068 /* type2.png */,
+				777F18D3178DBD5100428068 /* type3.png */,
+				777F18D4178DBD5100428068 /* type4.png */,
+			);
+			path = icons;
 			sourceTree = "<group>";
 		};
 		7787349317865285006F4E5F /* buttons */ = {
@@ -556,6 +576,10 @@
 				778734CB17865286006F4E5F /* whiteButton@2x.png in Resources */,
 				778734CC17865286006F4E5F /* whiteButtonHighlight.png in Resources */,
 				778734CD17865286006F4E5F /* whiteButtonHighlight@2x.png in Resources */,
+				777F18D5178DBD5100428068 /* type1.png in Resources */,
+				777F18D6178DBD5100428068 /* type2.png in Resources */,
+				777F18D7178DBD5100428068 /* type3.png in Resources */,
+				777F18D8178DBD5100428068 /* type4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

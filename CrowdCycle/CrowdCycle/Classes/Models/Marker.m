@@ -10,7 +10,6 @@
 #import "Comment.h"
 #import "User.h"
 
-
 @implementation Marker
 
 @dynamic dateCreated;

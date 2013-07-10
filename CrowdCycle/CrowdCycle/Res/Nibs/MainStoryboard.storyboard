@@ -18,58 +18,74 @@
                                     <constraint firstAttribute="height" constant="455" id="utE-gV-iUr"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-8H-Jj2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ic3-8H-Jj2">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="5bg-E2-VvG"/>
                                     <constraint firstAttribute="height" constant="49" id="DbT-jV-7Dx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="P">
+                                <state key="normal" title="1" image="type1.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="typeButtonTapped:" destination="UCU-kl-sKt" eventType="touchUpInside" id="NoC-CP-TJf"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsF-vA-M0b">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsF-vA-M0b">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="OYA-kZ-6VH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="H">
+                                <state key="normal" title="2" image="type2.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="typeButtonTapped:" destination="UCU-kl-sKt" eventType="touchUpInside" id="bv8-hB-Pc8"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-b5-qf0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI4-b5-qf0">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="5WP-Xy-QlV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="H">
+                                <state key="normal" title="3" image="type3.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="typeButtonTapped:" destination="UCU-kl-sKt" eventType="touchUpInside" id="tFj-eE-OeT"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsL-bL-XcF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsL-bL-XcF">
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="w5R-jW-9hq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="C">
+                                <state key="normal" title="4" image="type4.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="typeButtonTapped:" destination="UCU-kl-sKt" eventType="touchUpInside" id="siF-Np-ye8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -702,74 +718,12 @@
             <point key="canvasLocation" x="130" y="166"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CreateMarkerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateMarkerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveButtonTapped:"/>
-                <relationship kind="action" name="typeButtonTapped:"/>
-                <relationship kind="action" name="viewTapped:"/>
-                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="_descriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_saveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_titleTextField" candidateClass="UITextField"/>
-                <relationship kind="outletCollection" name="_typeButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginButtonPressed:"/>
-                <relationship kind="action" name="viewTapped:"/>
-                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_registerButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="dropPinButtonTapped:"/>
-                <relationship kind="action" name="profileButtonTapped:"/>
-                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
-                <relationship kind="outletCollection" name="_typeButtons" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ProfileViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logoutButtonPressed:"/>
-                <relationship kind="action" name="updateButtonPressed:"/>
-                <relationship kind="action" name="viewTapped:"/>
-                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="_confirmPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_currentPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_logoutButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="_nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_newPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_updateButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="RegisterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="registerButtonTapped:"/>
-                <relationship kind="action" name="viewTapped:"/>
-                <relationship kind="outlet" name="_activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="_confirmPasswordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_emailTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_passwordTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="_registerButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-    </classes>
+    <resources>
+        <image name="type1.png" width="81" height="49"/>
+        <image name="type2.png" width="81" height="49"/>
+        <image name="type3.png" width="81" height="49"/>
+        <image name="type4.png" width="81" height="49"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

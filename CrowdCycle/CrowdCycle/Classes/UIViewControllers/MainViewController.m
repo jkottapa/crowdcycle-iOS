@@ -32,6 +32,7 @@
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
+  _pinsOnMap = [NSMutableDictionary dictionary];
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;
   [locationManager startMonitoringSignificantLocationChanges];
@@ -44,6 +45,16 @@
   for (UIButton *typeButton in _typeButtons) {
     [typeButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [typeButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+  }
+  
+  markerType[0] = @"createNewMarker";
+  markerType[1] = @"pointOfIntrest";
+  markerType[2] = @"peopleHazard";
+  markerType[3] = @"physicalHazard";
+  markerType[4] = @"caution";
+  
+  for (int i = 1; i < 5; i++) {
+    showType[i] = YES;
   }
 }
 
@@ -116,10 +127,35 @@
       [_mapView selectAnnotation:_createPin animated:YES];
     } else {
       _createPin.coordinate = _mapView.centerCoordinate;
+      [[_mapView viewForAnnotation:_createPin] setHidden:NO];
     }
   }
   else{
     [self performSegueWithIdentifier:@"LoginViewController" sender:self];
+  }
+}
+
+- (IBAction)typeButtonTapped:(UIButton*)sender; {
+  int type = [sender.titleLabel.text intValue];
+  if (showType[type]) {
+    sender.alpha = 0.4;
+    showType[type] = NO;
+  } else {
+    sender.alpha = 1;
+    showType[type] = YES;
+  }
+
+  for (id mid in _pinsOnMap) {
+    MarkerPin* pin = [_pinsOnMap objectForKey:mid];
+    for (int i = 1; i < 5; i++) {
+      if ([pin.type isEqualToString:markerType[i]]) {
+        if (showType[i] == YES) {
+          [[_mapView viewForAnnotation:pin] setHidden:NO];
+        } else {
+          [[_mapView viewForAnnotation:pin] setHidden:YES];
+        }
+      }
+    }
   }
 }
 
@@ -134,11 +170,11 @@
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
     
-    if ([((MarkerPin*)annotation).type isEqualToString:@"createNewMarker"]) {
+    if ([((MarkerPin*)annotation).type isEqualToString:markerType[0]]) {
       annotationView.draggable = YES;
       annotationView.pinColor = MKPinAnnotationColorPurple;
     } else {
-      if ([((MarkerPin*)annotation).type isEqualToString:@"pointOfIntrest"]) {
+      if ([((MarkerPin*)annotation).type isEqualToString:markerType[1]]) {
         annotationView.pinColor = MKPinAnnotationColorGreen;
       } else {
         annotationView.pinColor = MKPinAnnotationColorRed;
@@ -151,7 +187,7 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control; {
   // Go to edit view
-  if ([[((MarkerPin*)view.annotation) type] isEqualToString:@"createNewMarker"]) {
+  if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
     [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
   }
 }
@@ -162,6 +198,7 @@
         // Get reference to the destination view controller
         CreateMarkerViewController *vc = [segue destinationViewController];
         vc.createLocation = _createPin.coordinate;
+      [[_mapView viewForAnnotation:_createPin] setHidden:YES];
     }
 }
 
@@ -177,6 +214,16 @@
       point.markerID = marker.markerID;
       point.type = marker.type;
       [_mapView addAnnotation:point];
+      for (int i = 1; i < 5; i++) {
+        if ([point.type isEqualToString:markerType[i]]) {
+          if (showType[i] == YES) {
+            [[_mapView viewForAnnotation:point] setHidden:NO];
+          } else {
+            [[_mapView viewForAnnotation:point] setHidden:YES];
+          }
+        }
+      }
+      
       [_pinsOnMap setObject:point forKey:marker.markerID];
     }
   }

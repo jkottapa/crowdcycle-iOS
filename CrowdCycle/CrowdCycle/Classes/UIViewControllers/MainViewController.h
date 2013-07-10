@@ -19,6 +19,8 @@
   MarkerPin * _createPin;
   NSMutableDictionary * _pinsOnMap;
   BOOL userLocated;
+  BOOL showType[5];
+  NSString * markerType[5];
 }
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -26,6 +28,7 @@
 
 - (IBAction)profileButtonTapped:(id)sender;
 - (IBAction)dropPinButtonTapped:(id)sender;
+- (IBAction)typeButtonTapped:(id)sender;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;

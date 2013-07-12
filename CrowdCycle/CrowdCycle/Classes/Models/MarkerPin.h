@@ -7,8 +7,11 @@
 //
 
 #import <MapKit/MapKit.h>
+#import "Marker.h"
 
 @interface MarkerPin : MKPointAnnotation
-@property (nonatomic, copy) NSString *markerID;
-@property (nonatomic, copy) NSString *type;
+
+@property (nonatomic, retain) Marker * marker;
+@property (nonatomic, copy) NSString * markerID;
+@property (nonatomic, copy) NSString * type;
 @end

@@ -9,10 +9,12 @@
 #import "CreateMarkerViewController.h"
 #import "Marker.h"
 #import "Comment.h"
+#import "AppDelegate.h"
 #import "CommentCell.h"
 
 @implementation CreateMarkerViewController
 
+@synthesize marker = _marker;
 @synthesize createLocation = _createLocation;
 
 #pragma mark - Init
@@ -44,6 +46,9 @@
   for (UIButton * typeButton in _typeButtons) {
     [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
     [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
+  }
+  if(_marker){
+    [[ServerController sharedServerController] getCommentsForMarker:_marker delegate:self];
   }
 }
 
@@ -104,12 +109,19 @@
 }
 
 - (IBAction)commentButtonTapped:(UIButton *)aButton; {
+  ServerController * serverController = [ServerController sharedServerController];
+  Comment * comment = (Comment *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Comment" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
   
+  comment.user = [AppDelegate appDelegate].currrentUser;
+  comment.marker = _marker;
+  comment.text = _commentTextField.text;
+  [serverController createComment:comment forMarker:_marker delegate:self];
 }
 
 - (void)dismissKeyboard; {
   [_titleTextField endEditing:YES];
   [_descriptionTextField endEditing:YES];
+  [_commentTextField endEditing:YES];
 }
 
 #pragma mark - UITextFieldDelegate Methods
@@ -137,7 +149,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
   Comment * comment = [_marker.comments.allObjects objectAtIndex:indexPath.row];
   CGSize labelSize = [comment.text sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0f] forWidth:292.0f lineBreakMode:NSLineBreakByWordWrapping];
-  return labelSize.height + 30.0f;
+  return labelSize.height + 80.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {

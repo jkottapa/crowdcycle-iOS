@@ -29,6 +29,7 @@
 }
 
 @property (nonatomic) CLLocationCoordinate2D createLocation;
+@property (nonatomic, retain) Marker       * marker;
 
 - (IBAction)viewTapped:(id)sender;
 - (IBAction)typeButtonTapped:(id)sender;

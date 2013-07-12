@@ -11,6 +11,7 @@
 #import "ServerController.h"
 #import "CreateMarkerViewController.h"
 #import "Marker.h"
+#import "MarkerPin.h"
 
 @interface MainViewController ()
 
@@ -39,9 +40,9 @@
   [_mapView setDelegate:self];
   
   UIImage *buttonImage = [[UIImage imageNamed:@"blackButton.png"]
-                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   UIImage *buttonImageHighlight = [[UIImage imageNamed:@"blackButtonHighlight.png"]
-                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+                                   resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   for (UIButton *typeButton in _typeButtons) {
     [typeButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [typeButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
@@ -108,10 +109,10 @@
     CLLocationCoordinate2D neCoord = MKCoordinateForMapPoint(neMapPoint);
     CLLocationCoordinate2D swCoord = MKCoordinateForMapPoint(swMapPoint);
     [[ServerController sharedServerController] getMarkersWithDelegate:self
-                     lat1:[NSNumber numberWithDouble:neCoord.latitude]
-                     long1:[NSNumber numberWithDouble:neCoord.longitude]
-                     lat2:[NSNumber numberWithDouble:swCoord.latitude]
-                     long2:[NSNumber numberWithDouble:swCoord.longitude]];
+                                                                 lat1:[NSNumber numberWithDouble:neCoord.latitude]
+                                                                long1:[NSNumber numberWithDouble:neCoord.longitude]
+                                                                 lat2:[NSNumber numberWithDouble:swCoord.latitude]
+                                                                long2:[NSNumber numberWithDouble:swCoord.longitude]];
   }
 }
 
@@ -144,7 +145,7 @@
     sender.alpha = 1;
     showType[type] = YES;
   }
-
+  
   for (id mid in _pinsOnMap) {
     MarkerPin* pin = [_pinsOnMap objectForKey:mid];
     for (int i = 1; i < 5; i++) {
@@ -187,19 +188,26 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control; {
   // Go to edit view
-  if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
-    [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
-  }
+  // if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
+  _createPin = view.annotation;
+  [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
+  // }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender; {
-    if ([[segue identifier] isEqualToString:@"CreateMarkerViewController"])
-    {
-        // Get reference to the destination view controller
-        CreateMarkerViewController *vc = [segue destinationViewController];
-        vc.createLocation = _createPin.coordinate;
+  if ([[segue identifier] isEqualToString:@"CreateMarkerViewController"])
+  {
+    // Get reference to the destination view controller
+    CreateMarkerViewController *vc = [segue destinationViewController];
+    vc.createLocation = _createPin.coordinate;
+    
+    if([_pinsOnMap objectForKey:_createPin.markerID]){
+      vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_createPin.markerID]).marker;
+    }
+    else{
       [[_mapView viewForAnnotation:_createPin] setHidden:YES];
     }
+  }
 }
 
 #pragma mark - ServerControllerDelegate Methods
@@ -213,6 +221,7 @@
       point.subtitle = marker.markerDescription;
       point.markerID = marker.markerID;
       point.type = marker.type;
+      point.marker = marker;
       [_mapView addAnnotation:point];
       for (int i = 1; i < 5; i++) {
         if ([point.type isEqualToString:markerType[i]]) {

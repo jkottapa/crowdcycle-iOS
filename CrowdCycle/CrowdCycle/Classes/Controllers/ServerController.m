@@ -259,8 +259,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
-  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;
@@ -279,6 +279,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   RKObjectMapping * markerSerialMapping = [RKObjectMapping requestMapping];
   [markerSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"LAT", @"latitude", @"LON", @"longitude", @"MARKERTYPE", @"type", @"TITLE", @"title", @"DESCRIPTION", @"markerDescription", nil]];
   
+  RKEntityMapping * commentMapping = [RKEntityMapping mappingForEntityForName:@"Comment" inManagedObjectStore:managedObjectStore];
+  [commentMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"commentID", @"uid", nil]];
+  
   RKObjectMapping * commentSerialMapping = [RKObjectMapping requestMapping];
   [commentSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"TEXT", @"text", nil]];
   
@@ -286,7 +289,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [_objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:userSerialMapping objectClass:[User class] rootKeyPath:nil]];
   [_objectManager addRequestDescriptor:[RKRequestDescriptor requestDescriptorWithMapping:commentSerialMapping objectClass:[Comment class] rootKeyPath:nil]];
   
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/create" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/create" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/detail/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
@@ -300,6 +303,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/edit/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:commentMapping pathPattern:@"comments/create/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 }
 
 - (NSArray *)fetchLocalObjectsOfClass:(NSString *)aClass searchPredicate:(NSPredicate *)aPredicate; {

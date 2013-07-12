@@ -28,6 +28,9 @@
   IBOutletCollection(UIButton) NSArray * _typeButtons;
   IBOutlet UIButton                    * _upVoteButton;
   IBOutlet UIButton                    * _downVoteButton;
+  IBOutlet UILabel                     * _voteLabel;
+  
+  BOOL                                 _editableMode;
 }
 
 @property (nonatomic) CLLocationCoordinate2D createLocation;
@@ -37,5 +40,6 @@
 - (IBAction)typeButtonTapped:(id)sender;
 - (IBAction)saveButtonTapped:(id)sender;
 - (IBAction)commentButtonTapped:(UIButton *)aButton;
-
+- (IBAction)upVoteButtonTapped:(UIButton *)aButton;
+- (IBAction)downVoteButtonTapped:(UIButton *)aButton;
 @end

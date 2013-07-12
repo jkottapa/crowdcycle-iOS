@@ -17,6 +17,7 @@
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didLogout:(bool) success;
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError;
+- (void)serverController:(ServerController *)serverController didGetCommentsForMarker:(Marker *)aMarker;
 
 @end
 

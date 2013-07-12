@@ -217,6 +217,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                         parameters:nil
                            success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                              NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                             NSError * error = nil;
+                             NSLog(@"Array: %@", mappingResult.array);
+                             [aMarker addComments:[NSSet setWithArray:mappingResult.array]];
+                             [aMarker.managedObjectContext save:&error];
+                             
+                             if (error) {
+                               NSLog(@"Save error");
+                             }
+                             
+                             if([(id)aDelegate respondsToSelector:@selector(serverController:didGetCommentsForMarker:)]){
+                               [aDelegate serverController:self didGetCommentsForMarker:aMarker];
+                             }
                            }
                            failure:^(RKObjectRequestOperation * operation, NSError * error) {
                              NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -280,7 +292,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [markerSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"LAT", @"latitude", @"LON", @"longitude", @"MARKERTYPE", @"type", @"TITLE", @"title", @"DESCRIPTION", @"markerDescription", nil]];
   
   RKEntityMapping * commentMapping = [RKEntityMapping mappingForEntityForName:@"Comment" inManagedObjectStore:managedObjectStore];
-  [commentMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"commentID", @"uid", nil]];
+  [commentMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"commentID", @"commentid", @"text", @"text", @"dateCreated", @"created", nil]];
+  [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:nil toKeyPath:@"user" withMapping:userMapping]];
   
   RKObjectMapping * commentSerialMapping = [RKObjectMapping requestMapping];
   [commentSerialMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"TEXT", @"text", nil]];
@@ -305,6 +318,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:commentMapping pathPattern:@"comments/create/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:commentMapping pathPattern:@"comments/list/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 }
 
 - (NSArray *)fetchLocalObjectsOfClass:(NSString *)aClass searchPredicate:(NSPredicate *)aPredicate; {

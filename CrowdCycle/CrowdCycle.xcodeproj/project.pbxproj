@@ -24,7 +24,6 @@
 		333500A517615AA100291F0F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333500A017615AA100291F0F /* SystemConfiguration.framework */; };
 		333E33341783DB9400EB55DD /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33331783DB9400EB55DD /* Filter.m */; };
 		333E333A1783DB9500EB55DD /* CircleSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33391783DB9500EB55DD /* CircleSubZone.m */; };
-		333E333D1783DB9500EB55DD /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E333C1783DB9500EB55DD /* Comment.m */; };
 		333E33401783DB9500EB55DD /* SubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E333F1783DB9500EB55DD /* SubZone.m */; };
 		333E33431783DB9600EB55DD /* Subscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33421783DB9600EB55DD /* Subscription.m */; };
 		333E33461783DB9600EB55DD /* BoxSubZone.m in Sources */ = {isa = PBXBuildFile; fileRef = 333E33451783DB9600EB55DD /* BoxSubZone.m */; };
@@ -34,6 +33,7 @@
 		33A7FFF51777F676006E3F8B /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A7FFEC1777F64E006E3F8B /* libRestKit.a */; };
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
 		33ADEF56178F7BE500B5AE19 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADEF55178F7BE500B5AE19 /* CommentCell.m */; };
+		33ADEF59178F9CB400B5AE19 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADEF58178F9CB300B5AE19 /* Comment.m */; };
 		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
 		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
 		777F18D5178DBD5100428068 /* type1.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D1178DBD5100428068 /* type1.png */; };
@@ -139,8 +139,6 @@
 		333E33331783DB9400EB55DD /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		333E33381783DB9500EB55DD /* CircleSubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSubZone.h; sourceTree = "<group>"; };
 		333E33391783DB9500EB55DD /* CircleSubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSubZone.m; sourceTree = "<group>"; };
-		333E333B1783DB9500EB55DD /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
-		333E333C1783DB9500EB55DD /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		333E333E1783DB9500EB55DD /* SubZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubZone.h; sourceTree = "<group>"; };
 		333E333F1783DB9500EB55DD /* SubZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubZone.m; sourceTree = "<group>"; };
 		333E33411783DB9600EB55DD /* Subscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subscription.h; sourceTree = "<group>"; };
@@ -158,6 +156,8 @@
 		33A7FFF81777F70D006E3F8B /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		33ADEF54178F7BE500B5AE19 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		33ADEF55178F7BE500B5AE19 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		33ADEF57178F9CB300B5AE19 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		33ADEF58178F9CB300B5AE19 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -296,8 +296,6 @@
 				333E33331783DB9400EB55DD /* Filter.m */,
 				333E33381783DB9500EB55DD /* CircleSubZone.h */,
 				333E33391783DB9500EB55DD /* CircleSubZone.m */,
-				333E333B1783DB9500EB55DD /* Comment.h */,
-				333E333C1783DB9500EB55DD /* Comment.m */,
 				333E333E1783DB9500EB55DD /* SubZone.h */,
 				333E333F1783DB9500EB55DD /* SubZone.m */,
 				333E33411783DB9600EB55DD /* Subscription.h */,
@@ -310,6 +308,8 @@
 				333E334B1783DB9600EB55DD /* User.m */,
 				77D220851788F48100C710F4 /* MarkerPin.h */,
 				77D220861788F48100C710F4 /* MarkerPin.m */,
+				33ADEF57178F9CB300B5AE19 /* Comment.h */,
+				33ADEF58178F9CB300B5AE19 /* Comment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -614,7 +614,6 @@
 				77C409FE177DE8B500E31AB5 /* CreateMarkerViewController.m in Sources */,
 				333E33341783DB9400EB55DD /* Filter.m in Sources */,
 				333E333A1783DB9500EB55DD /* CircleSubZone.m in Sources */,
-				333E333D1783DB9500EB55DD /* Comment.m in Sources */,
 				333E33401783DB9500EB55DD /* SubZone.m in Sources */,
 				333E33431783DB9600EB55DD /* Subscription.m in Sources */,
 				333E33461783DB9600EB55DD /* BoxSubZone.m in Sources */,
@@ -622,6 +621,7 @@
 				333E334C1783DB9600EB55DD /* User.m in Sources */,
 				77D220871788F48100C710F4 /* MarkerPin.m in Sources */,
 				33ADEF56178F7BE500B5AE19 /* CommentCell.m in Sources */,
+				33ADEF59178F9CB400B5AE19 /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

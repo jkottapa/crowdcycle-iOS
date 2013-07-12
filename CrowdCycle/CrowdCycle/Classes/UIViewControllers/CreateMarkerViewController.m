@@ -50,6 +50,10 @@
   if(_marker){
     [[ServerController sharedServerController] getCommentsForMarker:_marker delegate:self];
   }
+  
+  if(![AppDelegate appDelegate].currrentUser){
+    _commentTextField.hidden = YES;
+  }
 }
 
 #pragma mark - Methods
@@ -167,6 +171,12 @@
 
 
 #pragma mark - ServerControllerDelegate Methods
+
+- (void)serverController:(ServerController *)serverController didGetCommentsForMarker:(Marker *)aMarker; {
+  _marker = aMarker;
+  NSLog(@"Comments: %@", _marker.comments.allObjects);
+  [_tableView reloadData];
+}
 
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
   self.view.userInteractionEnabled = YES;

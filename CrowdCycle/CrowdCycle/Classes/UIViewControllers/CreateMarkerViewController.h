@@ -24,8 +24,10 @@
   IBOutlet UITextField                 * _commentTextField;
   IBOutlet UITextField                 * _descriptionTextField;
   IBOutlet UIActivityIndicatorView     * _activityIndicator;
-  
+  IBOutlet UIView                      * _voteContainerView;
   IBOutletCollection(UIButton) NSArray * _typeButtons;
+  IBOutlet UIButton                    * _upVoteButton;
+  IBOutlet UIButton                    * _downVoteButton;
 }
 
 @property (nonatomic) CLLocationCoordinate2D createLocation;

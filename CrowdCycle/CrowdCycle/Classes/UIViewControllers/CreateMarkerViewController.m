@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "CreateMarkerViewController.h"
 #import "Marker.h"
 #import "Comment.h"
@@ -31,6 +32,10 @@
 - (void)viewDidLoad; {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
+  _voteContainerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+  _voteContainerView.layer.borderWidth = 1.0f;
+  _voteContainerView.layer.cornerRadius = 5;
+  _voteContainerView.layer.masksToBounds = YES;
   UIImage * orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   UIImage * orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
@@ -42,6 +47,10 @@
   
   [_saveButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
   [_saveButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  [_upVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
+  [_upVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
+  [_downVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
+  [_downVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   
   for (UIButton * typeButton in _typeButtons) {
     [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];

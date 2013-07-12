@@ -200,6 +200,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                            }];
 }
 
+- (void)voteOnMarker:(Marker *)aMarker vote:(int)vote delegate:(id<ServerControllerDelegate>)aDelegate; {
+  [_objectManager getObjectsAtPath:[NSString stringWithFormat:@"markers/vote/%@", aMarker.markerID]
+                        parameters:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:vote], @"VOTE", nil]
+                           success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+                             NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                             if([(id)aDelegate respondsToSelector:@selector(serverController:didVoteMarker:)]){
+                               [aDelegate serverController:self didVoteMarker:mappingResult.firstObject];
+                             }
+                           }
+                           failure:^(RKObjectRequestOperation * operation, NSError * error) {
+                             NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                             if([(id)aDelegate respondsToSelector:@selector(serverController:didFailWithError:)]){
+                               [aDelegate serverController:self didFailWithError:error];
+                             }
+                           }];
+}
+
 - (void)deleteComment:(Comment *)aComment delegate:(id<ServerControllerDelegate>)aDelegate; {
   [_objectManager postObject:aComment
                         path:[NSString stringWithFormat:@"comments/delete/%@", aComment.commentID]
@@ -271,8 +288,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
-  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
+  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;

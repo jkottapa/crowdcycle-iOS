@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Daniel MacKenzie. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "CreateMarkerViewController.h"
 #import "Marker.h"
 #import "Comment.h"
+#import "User.h"
 #import "AppDelegate.h"
 #import "CommentCell.h"
 
@@ -31,6 +33,12 @@
 - (void)viewDidLoad; {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
+  _voteContainerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+  _voteContainerView.layer.borderWidth = 1.0f;
+  _voteContainerView.layer.cornerRadius = 5;
+  _voteContainerView.layer.masksToBounds = YES;
+  _titleTextField.text = _marker.title;
+  _descriptionTextField.text = _marker.markerDescription;
   UIImage * orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   UIImage * orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
@@ -42,13 +50,32 @@
   
   [_saveButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
   [_saveButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  [_upVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
+  [_upVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
+  [_downVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
+  [_downVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   
   for (UIButton * typeButton in _typeButtons) {
     [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
     [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   }
   if(_marker){
+    // not logged in or not creator
+    if (![AppDelegate appDelegate].currrentUser || ![_marker.owner.userID isEqualToString:[AppDelegate appDelegate].currrentUser.userID]) {
+      _titleTextField.borderStyle = UITextBorderStyleNone;
+      [_titleTextField setEnabled:NO];
+      _descriptionTextField.borderStyle = UITextBorderStyleNone;
+      [_descriptionTextField setEnabled:NO];
+      [_saveButton setHidden:YES];
+      _editableMode = NO;
+    } else {
+      _editableMode = YES;
+    }
+    _voteLabel.text = [NSString stringWithFormat:@"%i", ([_marker.upVotes intValue] - [_marker.downVotes intValue])];
     [[ServerController sharedServerController] getCommentsForMarker:_marker delegate:self];
+  } else {
+    _editableMode = YES;
+    [_voteContainerView setHidden:YES];
   }
   
   if(![AppDelegate appDelegate].currrentUser){
@@ -122,6 +149,25 @@
   [serverController createComment:comment forMarker:_marker delegate:self];
 }
 
+- (void)castVote:(int)vote; {
+  if ([AppDelegate appDelegate].currrentUser) {
+    self.view.userInteractionEnabled = NO;
+    [_activityIndicator startAnimating];
+    [[ServerController sharedServerController] voteOnMarker:_marker vote:vote delegate:self];
+  } else {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please login to vote" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+  }
+}
+
+- (IBAction)upVoteButtonTapped:(UIButton *)aButton; {
+  [self castVote:1];
+}
+
+- (IBAction)downVoteButtonTapped:(UIButton *)aButton; {
+  [self castVote:-1];
+}
+
 - (void)dismissKeyboard; {
   [_titleTextField endEditing:YES];
   [_descriptionTextField endEditing:YES];
@@ -172,15 +218,26 @@
 
 #pragma mark - ServerControllerDelegate Methods
 
+
 - (void)serverController:(ServerController *)serverController didGetCommentsForMarker:(Marker *)aMarker; {
   _marker = aMarker;
   NSLog(@"Comments: %@", _marker.comments.allObjects);
   [_tableView reloadData];
 }
 
+- (void)serverController:(ServerController *)serverController didVoteMarker:(Marker *)aMarker; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  _voteLabel.text = [NSString stringWithFormat:@"%i", ([aMarker.upVotes intValue] - [aMarker.downVotes intValue])];
+}
+
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
+  if ([aError.localizedRecoverySuggestion rangeOfString:@"can not cast the same vote twice"].location != NSNotFound) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You already casted that vote" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+  }
 }
 
 @end

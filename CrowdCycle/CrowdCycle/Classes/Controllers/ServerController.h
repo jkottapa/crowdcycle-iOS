@@ -12,6 +12,7 @@
 
 @optional
 - (void)serverController:(ServerController *)serverController didGetMarkers:(NSArray *)aMarkers;
+- (void)serverController:(ServerController *)serverController didVoteMarker:(Marker *)aMarker;
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didEditUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;
@@ -42,6 +43,7 @@
 - (void)createMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)deleteMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)getMarkerDetails:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;
+- (void)voteOnMarker:(Marker *)aMarker vote:(int)vote delegate:(id<ServerControllerDelegate>)aDelegate;
 
 - (void)deleteComment:(Comment *)aComment delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)getCommentsForMarker:(Marker *)aMarker delegate:(id<ServerControllerDelegate>)aDelegate;

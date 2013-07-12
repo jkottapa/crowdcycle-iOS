@@ -10,16 +10,29 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ServerController.h"
 
-@interface CreateMarkerViewController : UIViewController <UITextFieldDelegate, ServerControllerDelegate>{
+@class Marker;
+
+@interface CreateMarkerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ServerControllerDelegate> {
+  NSString                             * _markerType;
+  CLLocationCoordinate2D                 _createLocation;
+  
+  Marker                               * _marker;
+  
+  IBOutlet UIButton                    * _saveButton;
+  IBOutlet UITableView                 * _tableView;
+  IBOutlet UITextField                 * _titleTextField;
+  IBOutlet UITextField                 * _commentTextField;
+  IBOutlet UITextField                 * _descriptionTextField;
+  IBOutlet UIActivityIndicatorView     * _activityIndicator;
+  
   IBOutletCollection(UIButton) NSArray * _typeButtons;
-  IBOutlet UIButton * _saveButton;
-  IBOutlet UITextField * _titleTextField;
-  IBOutlet UITextField * _descriptionTextField;
-  IBOutlet UIActivityIndicatorView * _activityIndicator;
-  NSString * _markerType;
 }
+
+@property (nonatomic) CLLocationCoordinate2D createLocation;
+
+- (IBAction)viewTapped:(id)sender;
 - (IBAction)typeButtonTapped:(id)sender;
 - (IBAction)saveButtonTapped:(id)sender;
-- (IBAction)viewTapped:(id)sender;
-@property (nonatomic) CLLocationCoordinate2D createLocation;
+- (IBAction)commentButtonTapped:(UIButton *)aButton;
+
 @end

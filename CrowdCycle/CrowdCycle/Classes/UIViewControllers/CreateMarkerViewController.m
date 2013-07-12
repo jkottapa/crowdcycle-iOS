@@ -8,48 +8,46 @@
 
 #import "CreateMarkerViewController.h"
 #import "Marker.h"
-
-@interface CreateMarkerViewController ()
-
-@end
+#import "Comment.h"
+#import "CommentCell.h"
 
 @implementation CreateMarkerViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+@synthesize createLocation = _createLocation;
+
+#pragma mark - Init
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil; {
+  if((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])){
+    
+  }
+  return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+#pragma mark - View LifeStyle
+
+- (void)viewDidLoad; {
+  [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    UIImage *orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
-                            resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
-                                     resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *whiteButtonImage = [[UIImage imageNamed:@"whiteButton.png"]
-                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *whiteButtonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
-                                           resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-
-    [_saveButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
-    [_saveButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
-    for (UIButton *typeButton in _typeButtons) {
-        [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
-        [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
-    }
+  UIImage * orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
+                                 resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage * orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
+                                          resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage * whiteButtonImage = [[UIImage imageNamed:@"whiteButton.png"]
+                                resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  UIImage * whiteButtonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+                                         resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+  
+  [_saveButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_saveButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  
+  for (UIButton * typeButton in _typeButtons) {
+    [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
+    [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
+  }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Methods
 
 - (IBAction)typeButtonTapped:(UIButton*)sender; {
   for (UIButton * typeButton in _typeButtons) {
@@ -105,15 +103,56 @@
   [self dismissKeyboard];
 }
 
+- (IBAction)commentButtonTapped:(UIButton *)aButton; {
+  
+}
+
 - (void)dismissKeyboard; {
   [_titleTextField endEditing:YES];
   [_descriptionTextField endEditing:YES];
 }
 
+#pragma mark - UITextFieldDelegate Methods
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField; {
   [textField resignFirstResponder];
   return YES;
 }
+
+#pragma mark - UITableViewDataSource Methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView; {
+  return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
+  if(_marker){
+    return _marker.comments.count;
+  }
+  else{
+    return 0;
+  }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
+  Comment * comment = [_marker.comments.allObjects objectAtIndex:indexPath.row];
+  CGSize labelSize = [comment.text sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0f] forWidth:292.0f lineBreakMode:NSLineBreakByWordWrapping];
+  return labelSize.height + 30.0f;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath; {
+  static NSString * cellIdentifier = @"CommentCell";
+  CommentCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  
+  if(!cell){
+    cell = [[CommentCell alloc] init];
+  }
+  cell.comment = [_marker.comments.allObjects objectAtIndex:indexPath.row];
+  return cell;
+}
+
+#pragma mark - UITableViewDelegate Methods
+
 
 #pragma mark - ServerControllerDelegate Methods
 

@@ -33,6 +33,7 @@
 		33953C32177BC22F0032FE6D /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33953C31177BC22F0032FE6D /* ServerController.m */; };
 		33A7FFF51777F676006E3F8B /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A7FFEC1777F64E006E3F8B /* libRestKit.a */; };
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
+		33ADEF56178F7BE500B5AE19 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADEF55178F7BE500B5AE19 /* CommentCell.m */; };
 		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
 		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
 		777F18D5178DBD5100428068 /* type1.png in Resources */ = {isa = PBXBuildFile; fileRef = 777F18D1178DBD5100428068 /* type1.png */; };
@@ -155,6 +156,8 @@
 		33953C33177BC3500032FE6D /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		33A7FFE41777F64D006E3F8B /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = ../RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		33A7FFF81777F70D006E3F8B /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		33ADEF54178F7BE500B5AE19 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		33ADEF55178F7BE500B5AE19 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 				33953C2C177BC21C0032FE6D /* Controllers */,
 				3335006D1761576500291F0F /* Global */,
 				333500701761576500291F0F /* Models */,
+				33ADEF50178F7BC700B5AE19 /* UITableViewCells */,
 				333500711761576500291F0F /* UIViewControllers */,
 			);
 			name = Classes;
@@ -404,6 +408,15 @@
 				33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		33ADEF50178F7BC700B5AE19 /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				33ADEF54178F7BE500B5AE19 /* CommentCell.h */,
+				33ADEF55178F7BE500B5AE19 /* CommentCell.m */,
+			);
+			path = UITableViewCells;
 			sourceTree = "<group>";
 		};
 		777F18D0178DBD5100428068 /* icons */ = {
@@ -608,6 +621,7 @@
 				333E33491783DB9600EB55DD /* Marker.m in Sources */,
 				333E334C1783DB9600EB55DD /* User.m in Sources */,
 				77D220871788F48100C710F4 /* MarkerPin.m in Sources */,
+				33ADEF56178F7BE500B5AE19 /* CommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

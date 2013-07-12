@@ -58,12 +58,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                            }];
 }
 
-- (void)editUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate; {
-  [_objectManager postObject:aUser
+- (void)editUser:(User *)aUser withPassword:(NSString *)aPassword newPassword:(NSString *) aNewPassword newName:(NSString *)aNewName delegate:(id<ServerControllerDelegate>)aDelegate; {
+  NSMutableDictionary * mappings = [NSMutableDictionary dictionary];
+  if (aNewPassword) {
+    [mappings setObject:aNewPassword forKey:@"PSWD"];
+  }
+  if (aNewName) {
+    [mappings setObject:aNewName forKey:@"UNAME"];
+  }
+  [_objectManager postObject:nil
                         path:[NSString stringWithFormat:@"users/edit/%@", aUser.userID]
-                  parameters:[NSDictionary dictionaryWithObjectsAndKeys:aPassword, @"PSWD", nil]
+                  parameters:mappings
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       if (aNewName) {
+                         aUser.name = aNewName;
+                       }
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didEditUser:)]){
+                         [aDelegate serverController:self didEditUser:aUser];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -246,8 +259,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
-  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
+  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;
@@ -284,7 +297,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"logout" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/create" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/details/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/edit/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"users/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
 }

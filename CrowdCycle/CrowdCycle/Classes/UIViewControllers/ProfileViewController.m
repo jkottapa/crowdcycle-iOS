@@ -55,6 +55,29 @@
 
 - (IBAction)updateButtonPressed:(id)sender; {
   [self dismissKeyboard];
+  NSString * newName = nil;
+  NSString * newPassword = nil;
+  if (![_nameTextField.text isEqualToString:@""]) {
+    newName = _nameTextField.text;
+  }
+  if (![_newPasswordTextField.text isEqualToString:@""]) {
+    newPassword = _newPasswordTextField.text;
+  }
+  if (!newName && !newPassword) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No changes to update" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    return;
+  }
+  if ([_currentPasswordTextField.text isEqualToString:@""]) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter your current password" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+    return;
+  }
+  
+  self.view.userInteractionEnabled = NO;
+  [_activityIndicator startAnimating];
+
+  [[ServerController sharedServerController] editUser:[AppDelegate appDelegate].currrentUser withPassword:_currentPasswordTextField.text newPassword:newPassword newName:newName delegate:self];
 }
 
 - (IBAction)logoutButtonPressed:(id)sender; {
@@ -82,5 +105,19 @@
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
   [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)serverController:(ServerController *)serverController didEditUser:(User *)aUser; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  [self.view setNeedsDisplay];
+  _nameTextField.text = aUser.name;
+  _emailTextField.text = aUser.email;
+  _newPasswordTextField.text = @"";
+  _confirmPasswordTextField.text = @"";
+  _currentPasswordTextField.text = @"";
+  UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Account updated" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+  [alertView show];
+  return;
 }
 @end

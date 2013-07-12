@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "User.h"
 
 @interface LoginViewController ()
 
@@ -84,6 +85,7 @@
 
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser; {
   [AppDelegate appDelegate].currrentUser = aUser;
+  NSLog(@"%@ %@", aUser.name, aUser.email);
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
   [self.navigationController popViewControllerAnimated:YES];

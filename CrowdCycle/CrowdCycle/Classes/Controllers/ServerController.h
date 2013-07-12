@@ -13,6 +13,7 @@
 @optional
 - (void)serverController:(ServerController *)serverController didGetMarkers:(NSArray *)aMarkers;
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
+- (void)serverController:(ServerController *)serverController didEditUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didLogout:(bool) success;
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError;
@@ -31,7 +32,7 @@
 - (void)logout:(id<ServerControllerDelegate>)aDelegate;
 - (void)deleteUser:(User *)aUser delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)getUserDetails:(User *)aUser delegate:(id<ServerControllerDelegate>)aDelegate;
-- (void)editUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
+- (void)editUser:(User *)aUser withPassword:(NSString *)aPassword newPassword:(NSString *) aNewPassword newName:(NSString *)aNewName delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)createUser:(User *)aUser withPassword:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 - (void)loginWithEmail:(NSString *)aEmail password:(NSString *)aPassword delegate:(id<ServerControllerDelegate>)aDelegate;
 

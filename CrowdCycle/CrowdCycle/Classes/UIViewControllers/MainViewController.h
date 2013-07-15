@@ -17,6 +17,7 @@
   IBOutletCollection(UIButton) NSArray * _typeButtons;
   CLLocationManager * _locationManager;
   MarkerPin * _createPin;
+  MarkerPin * _tappedPin;
   NSMutableDictionary * _pinsOnMap;
   BOOL userLocated;
   BOOL showType[5];

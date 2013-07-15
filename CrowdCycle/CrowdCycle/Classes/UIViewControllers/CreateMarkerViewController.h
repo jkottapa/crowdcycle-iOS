@@ -13,12 +13,14 @@
 @class Marker;
 
 @interface CreateMarkerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ServerControllerDelegate> {
+  NSArray                              * _commentsArray;
   NSString                             * _markerType;
   CLLocationCoordinate2D                 _createLocation;
   
   Marker                               * _marker;
   
   IBOutlet UIButton                    * _saveButton;
+  IBOutlet UIButton                    * _sendButton;
   IBOutlet UITableView                 * _tableView;
   IBOutlet UITextField                 * _titleTextField;
   IBOutlet UITextField                 * _commentTextField;

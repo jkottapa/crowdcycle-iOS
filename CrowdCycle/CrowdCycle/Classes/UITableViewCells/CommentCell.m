@@ -17,7 +17,7 @@
   _commentLabel.text = comment.text;
   
   CGSize newSize = [comment.text sizeWithFont:_commentLabel.font forWidth:_commentLabel.frame.size.width lineBreakMode:NSLineBreakByWordWrapping];
-  _commentLabel.frame = CGRectMake(_commentLabel.frame.origin.x, _commentLabel.frame.origin.y, newSize.width, newSize.height);
+  _commentLabel.frame = CGRectMake(_commentLabel.frame.origin.x, _commentLabel.frame.origin.y, _commentLabel.frame.size.width, newSize.height);
 }
 
 #pragma mark - Init

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g1a-nV-HMn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="g1a-nV-HMn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -141,7 +141,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RT9-Fe-3nP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RT9-Fe-3nP">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -257,7 +257,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOs-ck-zeV">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOs-ck-zeV">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="IZn-qS-xRk"/>
                                 </constraints>
@@ -750,6 +750,7 @@
                         <outlet property="_descriptionTextField" destination="qI6-5v-iVK" id="l1A-hp-9iu"/>
                         <outlet property="_downVoteButton" destination="rcV-K0-xyo" id="QwK-mO-3vx"/>
                         <outlet property="_saveButton" destination="uF3-kw-Fea" id="H1c-Kt-MwB"/>
+                        <outlet property="_sendButton" destination="IoO-RF-YJZ" id="kjX-Lq-Q7Q"/>
                         <outlet property="_tableView" destination="Tap-YX-j9x" id="E2H-Qb-yeC"/>
                         <outlet property="_titleTextField" destination="ijw-0x-DZZ" id="9ue-fT-y3n"/>
                         <outlet property="_upVoteButton" destination="qAN-up-pbo" id="UIa-AK-FeC"/>
@@ -918,6 +919,7 @@
                 <relationship kind="outlet" name="_descriptionTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="_downVoteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_saveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="_sendButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="_tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="_titleTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="_upVoteButton" candidateClass="UIButton"/>

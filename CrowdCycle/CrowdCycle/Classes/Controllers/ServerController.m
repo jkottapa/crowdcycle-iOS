@@ -237,7 +237,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                              NSError * error = nil;
                              NSLog(@"Array: %@", mappingResult.array);
                              [aMarker addComments:[NSSet setWithArray:mappingResult.array]];
-                             [aMarker.managedObjectContext save:&error];
+                             //[aMarker.managedObjectContext save:&error];
                              
                              if (error) {
                                NSLog(@"Save error");
@@ -258,6 +258,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:nil
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didCreateComment:)]){
+                         [aDelegate serverController:self didCreateComment:mappingResult.firstObject];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -288,8 +292,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
-  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;

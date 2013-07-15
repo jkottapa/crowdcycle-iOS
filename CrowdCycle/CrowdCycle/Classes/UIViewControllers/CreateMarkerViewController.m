@@ -80,6 +80,7 @@
   
   if(![AppDelegate appDelegate].currrentUser){
     _commentTextField.hidden = YES;
+    _sendButton.hidden = YES;
   }
 }
 
@@ -144,7 +145,6 @@
   Comment * comment = (Comment *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Comment" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
   
   comment.user = [AppDelegate appDelegate].currrentUser;
-  comment.marker = _marker;
   comment.text = _commentTextField.text;
   [serverController createComment:comment forMarker:_marker delegate:self];
 }
@@ -176,6 +176,23 @@
 
 #pragma mark - UITextFieldDelegate Methods
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField; {
+  if([textField isEqual:_commentTextField]){
+    _tableView.contentSize = CGSizeMake(_tableView.contentSize.width, _tableView.contentSize.height + 216.0f);
+    CGPoint newOffset = CGPointMake(0.0f, _tableView.contentOffset.y + 216.0f);
+    [_tableView setContentOffset:newOffset animated:YES];
+  }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField; {
+  if([textField isEqual:_commentTextField]){
+    [UIView animateWithDuration:0.31f
+                     animations:^{
+                       _tableView.contentSize = CGSizeMake(_tableView.contentSize.width, _tableView.contentSize.height - 216.0f);
+                     }];
+  }
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField; {
   [textField resignFirstResponder];
   return YES;
@@ -189,7 +206,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section; {
   if(_marker){
-    return _marker.comments.count;
+    return _commentsArray.count;
   }
   else{
     return 0;
@@ -197,7 +214,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath; {
-  Comment * comment = [_marker.comments.allObjects objectAtIndex:indexPath.row];
+  Comment * comment = [_commentsArray objectAtIndex:indexPath.row];
   CGSize labelSize = [comment.text sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17.0f] forWidth:292.0f lineBreakMode:NSLineBreakByWordWrapping];
   return labelSize.height + 80.0f;
 }
@@ -209,8 +226,34 @@
   if(!cell){
     cell = [[CommentCell alloc] init];
   }
-  cell.comment = [_marker.comments.allObjects objectAtIndex:indexPath.row];
+  cell.comment = [_commentsArray objectAtIndex:indexPath.row];
   return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath; {
+  Comment * comment = [_commentsArray objectAtIndex:indexPath.row];
+  
+  if([comment.user isEqual:[AppDelegate appDelegate].currrentUser]){
+    return YES;
+  }
+  else{
+    return NO;
+  }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath; {
+  Comment * comment = [_commentsArray objectAtIndex:indexPath.row];
+  
+  if([comment.user isEqual:[AppDelegate appDelegate].currrentUser] && editingStyle == UITableViewCellEditingStyleDelete){
+    ServerController * serverController = [ServerController sharedServerController];
+    [serverController deleteComment:comment delegate:self];
+    [serverController.managedObjectContext deleteObject:comment];
+    [serverController getCommentsForMarker:_marker delegate:self];
+    return UITableViewCellEditingStyleDelete;
+  }
+  else{
+    return UITableViewCellEditingStyleNone;
+  }
 }
 
 #pragma mark - UITableViewDelegate Methods
@@ -218,10 +261,15 @@
 
 #pragma mark - ServerControllerDelegate Methods
 
+- (void)serverController:(ServerController *)serverController didCreateComment:(Comment *)aComment; {
+  [serverController getCommentsForMarker:_marker delegate:self];
+}
 
 - (void)serverController:(ServerController *)serverController didGetCommentsForMarker:(Marker *)aMarker; {
   _marker = aMarker;
-  NSLog(@"Comments: %@", _marker.comments.allObjects);
+  _commentsArray = [_marker.comments.allObjects sortedArrayUsingComparator:^NSComparisonResult(Comment * obj1, Comment * obj2) {
+    return [obj1.dateCreated compare:obj2.dateCreated];
+  }];
   [_tableView reloadData];
 }
 

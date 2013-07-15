@@ -189,7 +189,7 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control; {
   // Go to edit view
   // if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
-  _createPin = view.annotation;
+  _tappedPin = view.annotation;
   [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
   // }
 }
@@ -199,13 +199,13 @@
   {
     // Get reference to the destination view controller
     CreateMarkerViewController *vc = [segue destinationViewController];
-    vc.createLocation = _createPin.coordinate;
+    vc.createLocation = _tappedPin.coordinate;
     
-    if([_pinsOnMap objectForKey:_createPin.markerID]){
-      vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_createPin.markerID]).marker;
+    if([_pinsOnMap objectForKey:_tappedPin.markerID]){
+      vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_tappedPin.markerID]).marker;
     }
     else{
-      [[_mapView viewForAnnotation:_createPin] setHidden:YES];
+      [[_mapView viewForAnnotation:_tappedPin] setHidden:YES];
     }
   }
 }

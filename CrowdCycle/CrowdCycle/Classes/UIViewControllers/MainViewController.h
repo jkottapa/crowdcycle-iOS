@@ -33,5 +33,5 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
-
+- (void)deletePin:(NSString *)mid;
 @end

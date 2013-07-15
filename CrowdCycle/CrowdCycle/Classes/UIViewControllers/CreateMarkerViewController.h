@@ -20,7 +20,8 @@
   Marker                               * _marker;
   
   IBOutlet UIButton                    * _saveButton;
-  IBOutlet UIButton                    * _sendButton;
+  IBOutlet UIButton                    * _deleteButton;
+  IBOutlet UIButton                    * _commentButton;
   IBOutlet UITableView                 * _tableView;
   IBOutlet UITextField                 * _titleTextField;
   IBOutlet UITextField                 * _commentTextField;
@@ -44,4 +45,5 @@
 - (IBAction)commentButtonTapped:(UIButton *)aButton;
 - (IBAction)upVoteButtonTapped:(UIButton *)aButton;
 - (IBAction)downVoteButtonTapped:(UIButton *)aButton;
+- (IBAction)deleteButtonTapped:(UIButton *)aButton;
 @end

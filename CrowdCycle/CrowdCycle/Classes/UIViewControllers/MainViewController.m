@@ -29,6 +29,10 @@
   return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [self loadPinsOnMap];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -102,6 +106,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated; {
+  [self loadPinsOnMap];
+}
+
+- (void)loadPinsOnMap; {
   if (userLocated == YES) {
     MKMapRect mRect = _mapView.visibleMapRect;
     MKMapPoint neMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), mRect.origin.y);
@@ -129,6 +137,7 @@
     } else {
       _createPin.coordinate = _mapView.centerCoordinate;
       [[_mapView viewForAnnotation:_createPin] setHidden:NO];
+      [_mapView selectAnnotation:_createPin animated:YES];
     }
   }
   else{
@@ -199,8 +208,7 @@
   {
     // Get reference to the destination view controller
     CreateMarkerViewController *vc = [segue destinationViewController];
-    vc.createLocation = _tappedPin.coordinate;
-    
+
     if([_pinsOnMap objectForKey:_tappedPin.markerID]){
       vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_tappedPin.markerID]).marker;
     }
@@ -208,6 +216,12 @@
       [[_mapView viewForAnnotation:_tappedPin] setHidden:YES];
     }
   }
+}
+
+- (void)deletePin:(NSString *)mid; {
+  MarkerPin * pin = [_pinsOnMap objectForKey:mid];
+  [_pinsOnMap removeObjectForKey:mid];
+  [_mapView removeAnnotation:pin];
 }
 
 #pragma mark - ServerControllerDelegate Methods

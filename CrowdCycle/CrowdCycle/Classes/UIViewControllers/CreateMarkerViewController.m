@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "CreateMarkerViewController.h"
+#import "MainViewController.h"
 #import "Marker.h"
 #import "Comment.h"
 #import "User.h"
@@ -37,8 +38,6 @@
   _voteContainerView.layer.borderWidth = 1.0f;
   _voteContainerView.layer.cornerRadius = 5;
   _voteContainerView.layer.masksToBounds = YES;
-  _titleTextField.text = _marker.title;
-  _descriptionTextField.text = _marker.markerDescription;
   UIImage * orangeButtonImage = [[UIImage imageNamed:@"blueButton.png"]
                                  resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
   UIImage * orangeButtonImageHighlight = [[UIImage imageNamed:@"blueButtonHighlight.png"]
@@ -50,55 +49,89 @@
   
   [_saveButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
   [_saveButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
+  [_deleteButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_deleteButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
   [_upVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
   [_upVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   [_downVoteButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
   [_downVoteButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
+  [_commentButton setBackgroundImage:orangeButtonImage forState:UIControlStateNormal];
+  [_commentButton setBackgroundImage:orangeButtonImageHighlight forState:UIControlStateHighlighted];
   
   for (UIButton * typeButton in _typeButtons) {
     [typeButton setBackgroundImage:whiteButtonImage forState:UIControlStateNormal];
     [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   }
   if(_marker){
+    [self initiateTypeButtons];
+    _titleTextField.text = _marker.title;
+    _descriptionTextField.text = _marker.markerDescription;
     // not logged in or not creator
-    if (![AppDelegate appDelegate].currrentUser || ![_marker.owner.userID isEqualToString:[AppDelegate appDelegate].currrentUser.userID]) {
+    if (![AppDelegate appDelegate].currrentUser || ![_marker.ownerID isEqualToString:[AppDelegate appDelegate].currrentUser.userID]) {
       _titleTextField.borderStyle = UITextBorderStyleNone;
       [_titleTextField setEnabled:NO];
       _descriptionTextField.borderStyle = UITextBorderStyleNone;
       [_descriptionTextField setEnabled:NO];
       [_saveButton setHidden:YES];
+      [_deleteButton setHidden:YES];
+      for (UIButton * typeButton in _typeButtons) {
+        [typeButton setEnabled:NO];
+      }
       _editableMode = NO;
     } else {
+      // edit
+      _markerType = _marker.type;
       _editableMode = YES;
     }
     _voteLabel.text = [NSString stringWithFormat:@"%i", ([_marker.upVotes intValue] - [_marker.downVotes intValue])];
     [[ServerController sharedServerController] getCommentsForMarker:_marker delegate:self];
   } else {
     _editableMode = YES;
-    [_voteContainerView setHidden:YES];
+    _upVoteButton.hidden = YES;
+    _downVoteButton.hidden = YES;
+    _voteLabel.hidden = YES;
+    _commentTextField.hidden = YES;
+    _commentButton.hidden = YES;
+    _deleteButton.hidden = YES;
   }
   
   if(![AppDelegate appDelegate].currrentUser){
     _commentTextField.hidden = YES;
-    _sendButton.hidden = YES;
+    _commentButton.hidden = YES;
   }
 }
 
 #pragma mark - Methods
 
-- (IBAction)typeButtonTapped:(UIButton*)sender; {
+- (void) initiateTypeButtons; {
   for (UIButton * typeButton in _typeButtons) {
-    typeButton.alpha = .5;
+    if([typeButton.titleLabel.text isEqualToString:@"Point of Interest"] && [_marker.type isEqualToString:@"pointOfIntrest"]) {
+      typeButton.alpha = 1;
+    } else if([typeButton.titleLabel.text isEqualToString:@"Physical Hazard"] && [_marker.type isEqualToString:@"physicalHazard"]) {
+      typeButton.alpha = 1;
+    } else if([typeButton.titleLabel.text isEqualToString:@"People Hazard"] && [_marker.type isEqualToString:@"peopleHazard"]) {
+      typeButton.alpha = 1;
+    } else if([typeButton.titleLabel.text isEqualToString:@"Caution"] && [_marker.type isEqualToString:@"caution"]) {
+      typeButton.alpha = 1;
+    }
   }
-  sender.alpha = 1;
-  if([sender.titleLabel.text isEqualToString:@"Point of Interest"]) {
-    _markerType = @"pointOfIntrest";
-  } else if ([sender.titleLabel.text isEqualToString:@"Physical Hazard"]) {
-    _markerType = @"physicalHazard";
-  } else if ([sender.titleLabel.text isEqualToString:@"People Hazard"]) {
-    _markerType = @"peopleHazard";
-  } else if ([sender.titleLabel.text isEqualToString:@"Caution"]) {
-    _markerType = @"caution";
+}
+
+- (IBAction)typeButtonTapped:(UIButton*)sender; {
+  if (_editableMode) {
+    for (UIButton * typeButton in _typeButtons) {
+      typeButton.alpha = .3;
+    }
+    sender.alpha = 1;
+    if([sender.titleLabel.text isEqualToString:@"Point of Interest"]) {
+      _markerType = @"pointOfIntrest";
+    } else if ([sender.titleLabel.text isEqualToString:@"Physical Hazard"]) {
+      _markerType = @"physicalHazard";
+    } else if ([sender.titleLabel.text isEqualToString:@"People Hazard"]) {
+      _markerType = @"peopleHazard";
+    } else if ([sender.titleLabel.text isEqualToString:@"Caution"]) {
+      _markerType = @"caution";
+    }
   }
 }
 
@@ -124,15 +157,24 @@
     self.view.userInteractionEnabled = NO;
     [_activityIndicator startAnimating];
     
-    ServerController * serverController = [ServerController sharedServerController];
-    Marker * marker = (Marker *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Marker" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
-    
-    marker.latitude = [NSNumber numberWithDouble:_createLocation.latitude];
-    marker.longitude = [NSNumber numberWithDouble:_createLocation.longitude];
-    marker.markerDescription = _descriptionTextField.text;
-    marker.title = _titleTextField.text;
-    marker.type = _markerType;
-    [serverController createMarker:marker delegate:self];
+    if (_marker) {
+      // edit existing
+      _marker.markerDescription = _descriptionTextField.text;
+      _marker.title = _titleTextField.text;
+      _marker.type = _markerType;
+      [[ServerController sharedServerController] editMarker:_marker delegate:self];
+    } else{
+      // create new
+      ServerController * serverController = [ServerController sharedServerController];
+      Marker * marker = (Marker *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Marker" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
+      
+      marker.latitude = [NSNumber numberWithDouble:_createLocation.latitude];
+      marker.longitude = [NSNumber numberWithDouble:_createLocation.longitude];
+      marker.markerDescription = _descriptionTextField.text;
+      marker.title = _titleTextField.text;
+      marker.type = _markerType;
+      [serverController createMarker:marker delegate:self];
+    }
   }
 }
 
@@ -166,6 +208,13 @@
 
 - (IBAction)downVoteButtonTapped:(UIButton *)aButton; {
   [self castVote:-1];
+}
+
+- (IBAction)deleteButtonTapped:(UIButton *)aButton; {
+  [self dismissKeyboard];
+  self.view.userInteractionEnabled = NO;
+  [_activityIndicator startAnimating];
+  [[ServerController sharedServerController] deleteMarker:_marker delegate:self];
 }
 
 - (void)dismissKeyboard; {
@@ -288,4 +337,25 @@
   }
 }
 
+- (void)serverController:(ServerController *)serverController didCreateMarker:(Marker *)aMarker; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)serverController:(ServerController *)serverController didEditMarker:(Marker *)aMarker; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  MainViewController * vc = [[self.navigationController viewControllers] objectAtIndex:0];
+  [vc deletePin:aMarker.markerID];
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)serverController:(ServerController *)serverController didDeleteMarker:(Marker *)aMarker; {
+  self.view.userInteractionEnabled = YES;
+  [_activityIndicator stopAnimating];
+  MainViewController * vc = [[self.navigationController viewControllers] objectAtIndex:0];
+  [vc deletePin:aMarker.markerID];
+  [self.navigationController popViewControllerAnimated:YES];
+}
 @end

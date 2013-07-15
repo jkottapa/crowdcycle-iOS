@@ -159,6 +159,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:nil
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didEditMarker:)]){
+                         [aDelegate serverController:self didEditMarker:aMarker];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -171,6 +174,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:nil
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didCreateMarker:)]){
+                         [aDelegate serverController:self didCreateMarker:aMarker];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -183,6 +189,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:nil
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       if([(id)aDelegate respondsToSelector:@selector(serverController:didDeleteMarker:)]){
+                         [aDelegate serverController:self didDeleteMarker:aMarker];
+                       }
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -288,8 +297,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [RKManagedObjectStore setDefaultStore:managedObjectStore];
   
-  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
-  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
+  //_objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://localhost:3000/"]];
+  _objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:@"http://crowdcycle.herokuapp.com/"]];
   _objectManager.managedObjectStore = managedObjectStore;
   _objectManager.requestSerializationMIMEType = RKMIMETypeJSON;
   _managedObjectContext = _objectManager.managedObjectStore.mainQueueManagedObjectContext;
@@ -299,7 +308,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   userMapping.identificationAttributes = [NSArray arrayWithObjects:@"userID", nil];
   
   RKEntityMapping * markerMapping = [RKEntityMapping mappingForEntityForName:@"Marker" inManagedObjectStore:managedObjectStore];
-  [markerMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"dateCreated", @"created", @"dateModified", @"modified", @"downVotes", @"downvotes", @"upVotes", @"upvotes", @"latitude", @"latitude", @"longitude", @"longitude", @"markerDescription", @"description", @"markerID", @"uid", @"title", @"title", @"type", @"markertype", nil]];
+  [markerMapping addAttributeMappingsFromDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"dateCreated", @"created", @"dateModified", @"modified", @"downVotes", @"downvotes", @"upVotes", @"upvotes", @"latitude", @"latitude", @"longitude", @"longitude", @"markerDescription", @"description", @"markerID", @"uid", @"title", @"title", @"type", @"markertype", @"ownerID", @"ownerid", nil]];
   markerMapping.identificationAttributes = [NSArray arrayWithObjects:@"markerID", nil];
   
   RKObjectMapping * userSerialMapping = [RKObjectMapping requestMapping];
@@ -321,9 +330,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
   
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/create" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/detail/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/edit/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/edit/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/list" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
-  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/delete/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
+  [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/delete/:id" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:markerMapping pathPattern:@"markers/vote/:id" keyPath:@"rows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];
   
   [_objectManager addResponseDescriptor:[RKResponseDescriptor responseDescriptorWithMapping:userMapping pathPattern:@"login" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)]];

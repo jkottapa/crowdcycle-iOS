@@ -17,6 +17,7 @@
   IBOutletCollection(UIButton) NSArray * _typeButtons;
   CLLocationManager * _locationManager;
   MarkerPin * _createPin;
+  MarkerPin * _currentPin;
   NSMutableDictionary * _pinsOnMap;
   BOOL userLocated;
   BOOL showType[5];
@@ -32,5 +33,5 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
-
+- (void)deletePin:(NSString *)mid;
 @end

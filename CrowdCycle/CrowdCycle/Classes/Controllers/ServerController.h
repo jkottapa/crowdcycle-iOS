@@ -13,6 +13,9 @@
 @optional
 - (void)serverController:(ServerController *)serverController didGetMarkers:(NSArray *)aMarkers;
 - (void)serverController:(ServerController *)serverController didVoteMarker:(Marker *)aMarker;
+- (void)serverController:(ServerController *)serverController didCreateMarker:(Marker *)aMarker;
+- (void)serverController:(ServerController *)serverController didEditMarker:(Marker *)aMarker;
+- (void)serverController:(ServerController *)serverController didDeleteMarker:(Marker *)aMarker;
 - (void)serverController:(ServerController *)serverController didCreateUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didEditUser:(User *)aUser;
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser;

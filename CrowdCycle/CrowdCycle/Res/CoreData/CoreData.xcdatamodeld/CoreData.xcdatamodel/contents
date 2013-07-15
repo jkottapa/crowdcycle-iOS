@@ -31,6 +31,7 @@
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="markerDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="markerID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ownerID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upVotes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -63,7 +64,7 @@
         <element name="CircleSubZone" positionX="-290" positionY="477" width="128" height="88"/>
         <element name="Comment" positionX="531" positionY="243" width="128" height="118"/>
         <element name="Filter" positionX="-297" positionY="261" width="128" height="88"/>
-        <element name="Marker" positionX="340" positionY="432" width="128" height="223"/>
+        <element name="Marker" positionX="340" positionY="432" width="128" height="240"/>
         <element name="Subscription" positionX="-90" positionY="276" width="128" height="118"/>
         <element name="SubZone" positionX="-108" positionY="423" width="128" height="88"/>
         <element name="User" positionX="142" positionY="171" width="128" height="148"/>

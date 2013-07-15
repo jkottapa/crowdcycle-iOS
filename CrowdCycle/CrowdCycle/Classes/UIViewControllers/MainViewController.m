@@ -29,6 +29,10 @@
   return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [self loadPinsOnMap];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -102,6 +106,10 @@
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated; {
+  [self loadPinsOnMap];
+}
+
+- (void)loadPinsOnMap; {
   if (userLocated == YES) {
     MKMapRect mRect = _mapView.visibleMapRect;
     MKMapPoint neMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), mRect.origin.y);
@@ -129,6 +137,7 @@
     } else {
       _createPin.coordinate = _mapView.centerCoordinate;
       [[_mapView viewForAnnotation:_createPin] setHidden:NO];
+      [_mapView selectAnnotation:_createPin animated:YES];
     }
   }
   else{
@@ -188,8 +197,11 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control; {
   // Go to edit view
-  // if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
-  _createPin = view.annotation;
+  if ([[((MarkerPin*)view.annotation) type] isEqualToString:markerType[0]]) {
+    _currentPin = _createPin;
+  } else {
+    _currentPin = view.annotation;
+  }
   [self performSegueWithIdentifier:@"CreateMarkerViewController" sender:self];
   // }
 }
@@ -199,15 +211,20 @@
   {
     // Get reference to the destination view controller
     CreateMarkerViewController *vc = [segue destinationViewController];
-    vc.createLocation = _createPin.coordinate;
-    
-    if([_pinsOnMap objectForKey:_createPin.markerID]){
-      vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_createPin.markerID]).marker;
+    if([_pinsOnMap objectForKey:_currentPin.markerID]){
+      vc.marker = ((MarkerPin *)[_pinsOnMap objectForKey:_currentPin.markerID]).marker;
     }
     else{
-      [[_mapView viewForAnnotation:_createPin] setHidden:YES];
+      vc.createLocation = _currentPin.coordinate;
+      [[_mapView viewForAnnotation:_currentPin] setHidden:YES];
     }
   }
+}
+
+- (void)deletePin:(NSString *)mid; {
+  MarkerPin * pin = [_pinsOnMap objectForKey:mid];
+  [_pinsOnMap removeObjectForKey:mid];
+  [_mapView removeAnnotation:pin];
 }
 
 #pragma mark - ServerControllerDelegate Methods

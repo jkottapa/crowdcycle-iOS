@@ -19,6 +19,7 @@
 @dynamic longitude;
 @dynamic markerDescription;
 @dynamic markerID;
+@dynamic ownerID;
 @dynamic title;
 @dynamic type;
 @dynamic upVotes;

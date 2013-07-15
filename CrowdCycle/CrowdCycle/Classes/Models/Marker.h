@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * markerDescription;
 @property (nonatomic, retain) NSString * markerID;
+@property (nonatomic, retain) NSString * ownerID;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSNumber * upVotes;

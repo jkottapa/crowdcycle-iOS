@@ -214,6 +214,7 @@
     }
     else{
       [[_mapView viewForAnnotation:_tappedPin] setHidden:YES];
+      vc.createLocation = _tappedPin.coordinate;
     }
   }
 }

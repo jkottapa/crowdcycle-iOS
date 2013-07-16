@@ -70,8 +70,10 @@
     // not logged in or not creator
     if (![AppDelegate appDelegate].currrentUser || ![_marker.ownerID isEqualToString:[AppDelegate appDelegate].currrentUser.userID]) {
       _titleTextField.borderStyle = UITextBorderStyleNone;
+      _titleTextField.textColor = [UIColor whiteColor];
       [_titleTextField setEnabled:NO];
       _descriptionTextField.borderStyle = UITextBorderStyleNone;
+      _descriptionTextField.textColor = [UIColor whiteColor];
       [_descriptionTextField setEnabled:NO];
       [_saveButton setHidden:YES];
       [_deleteButton setHidden:YES];

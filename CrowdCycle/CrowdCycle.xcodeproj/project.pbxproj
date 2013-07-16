@@ -34,6 +34,7 @@
 		33A7FFF91777F70D006E3F8B /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33A7FFF71777F70D006E3F8B /* CoreData.xcdatamodeld */; };
 		33ADEF56178F7BE500B5AE19 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADEF55178F7BE500B5AE19 /* CommentCell.m */; };
 		33ADEF59178F9CB400B5AE19 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 33ADEF58178F9CB300B5AE19 /* Comment.m */; };
+		575DC9B101964A31B5BD3101 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AF05C9A91A4BB4B4E7C40A /* libPods.a */; };
 		771C5972177DD6DD004C715C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771C5971177DD6DD004C715C /* CoreLocation.framework */; };
 		772CEA3A177778C700AFB92D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772CEA39177778C700AFB92D /* MainViewController.m */; };
 		7741F3B5178F9675002F634A /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = 7741F3B3178F9675002F634A /* down.png */; };
@@ -118,6 +119,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13AF05C9A91A4BB4B4E7C40A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		333500461761567000291F0F /* CrowdCycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrowdCycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333500491761567000291F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3335004B1761567000291F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,6 +162,7 @@
 		33ADEF55178F7BE500B5AE19 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		33ADEF57178F9CB300B5AE19 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		33ADEF58178F9CB300B5AE19 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		391511883AE244FAB3109C5A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		771C5971177DD6DD004C715C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		772CEA38177778C700AFB92D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		772CEA39177778C700AFB92D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 				3335004A1761567000291F0F /* UIKit.framework in Frameworks */,
 				3335004C1761567000291F0F /* Foundation.framework in Frameworks */,
 				3335004E1761567000291F0F /* CoreGraphics.framework in Frameworks */,
+				575DC9B101964A31B5BD3101 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +247,7 @@
 				333500751761576500291F0F /* Res */,
 				333500481761567000291F0F /* Frameworks */,
 				333500471761567000291F0F /* Products */,
+				391511883AE244FAB3109C5A /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -266,6 +271,7 @@
 				3335009F17615AA100291F0F /* Security.framework */,
 				333500A017615AA100291F0F /* SystemConfiguration.framework */,
 				333500491761567000291F0F /* UIKit.framework */,
+				13AF05C9A91A4BB4B4E7C40A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -479,9 +485,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 333500691761567000291F0F /* Build configuration list for PBXNativeTarget "CrowdCycle" */;
 			buildPhases = (
+				ABACCAC632B54C509F13B393 /* Check Pods Manifest.lock */,
 				333500421761567000291F0F /* Sources */,
 				333500431761567000291F0F /* Frameworks */,
 				333500441761567000291F0F /* Resources */,
+				DDBF3EBEE44044C7A9EF62EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -606,6 +614,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		ABACCAC632B54C509F13B393 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DDBF3EBEE44044C7A9EF62EE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		333500421761567000291F0F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -702,14 +743,19 @@
 		};
 		3335006A1761567000291F0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 391511883AE244FAB3109C5A /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrowdCycle/Res/Supporting Files/CrowdCycle-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/CrowdCycle/Res/Supporting Files/CrowdCycle-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -718,14 +764,19 @@
 		};
 		3335006B1761567000291F0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 391511883AE244FAB3109C5A /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrowdCycle/Res/Supporting Files/CrowdCycle-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**";
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"/**",
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/CrowdCycle/Res/Supporting Files/CrowdCycle-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

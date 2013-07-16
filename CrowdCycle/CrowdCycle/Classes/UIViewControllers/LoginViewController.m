@@ -9,6 +9,8 @@
 #import "LoginViewController.h"
 #import "AppDelegate.h"
 #import "User.h"
+#import <libPusher/PTPusher.h>
+#import <libPusher/PTPusherChannel.h>
 
 @interface LoginViewController ()
 
@@ -85,6 +87,11 @@
 
 - (void)serverController:(ServerController *)serverController didGetUserDetails:(User *)aUser; {
   [AppDelegate appDelegate].currrentUser = aUser;
+  PTPusherChannel * channel = [[AppDelegate appDelegate].client subscribeToChannelNamed:aUser.userID];
+  [channel bindToEventNamed:@"new_marker" handleWithBlock:^(PTPusherEvent * channelEvent) {
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Notitication" message:@"It worked!" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alertView show];
+  }];
   NSLog(@"%@ %@", aUser.name, aUser.email);
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];

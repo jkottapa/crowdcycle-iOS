@@ -3,6 +3,8 @@
 #import "RegisterViewController.h"
 #import "User.h"
 #import "AppDelegate.h"
+#import <libPusher/PTPusher.h>
+#import <libPusher/PTPusherChannel.h>
 
 @implementation RegisterViewController
 
@@ -80,6 +82,10 @@
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
   [AppDelegate appDelegate].currrentUser = aUser;
+  PTPusherChannel * channel = [[AppDelegate appDelegate].client subscribeToChannelNamed:aUser.userID];
+  [channel bindToEventNamed:@"new_marker" handleWithBlock:^(PTPusherEvent * channelEvent) {
+    NSLog(@"Notification");
+  }];
   [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -124,6 +124,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
                        
+//                       [_objectManager postObject:nil
+//                                           path:@"subscriptions/create"
+//                                             parameters:[NSDictionary dictionaryWithObjectsAndKeys:@"43.477152", @"LAT1", @"-80.560942", @"LON1", @"43.465815", @"LAT2", @"-80.533304", @"LON2", @"box", @"ZONETYPE", @"box", @"TYPES", user.userID, @"DEVICEID", nil]
+//                                                success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
+//                                                  NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+//                                                }
+//                                                failure:^(RKObjectRequestOperation * operation, NSError * error) {
+//                                                  NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+//                                                }];
+                       
                        if([(id)aDelegate respondsToSelector:@selector(serverController:didCreateUser:)]){
                          NSArray * array = [self fetchLocalObjectsOfClass:@"User" searchPredicate:[NSPredicate predicateWithFormat:@"userID = %@", ((User *)[mappingResult firstObject]).userID]];
                          [aDelegate serverController:self didCreateUser:[array objectAtIndex:0]];

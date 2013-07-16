@@ -17,6 +17,7 @@
   IBOutlet UITextField * _confirmPasswordTextField;
   IBOutlet UIButton * _updateButton;
   IBOutlet UIButton * _logoutButton;
+  IBOutlet UIScrollView * _scrollView;
   IBOutlet UIActivityIndicatorView * _activityIndicator;
 }
 

@@ -95,6 +95,17 @@
   [_currentPasswordTextField endEditing:YES];
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField; {
+  if(([textField isEqual:_newPasswordTextField] || [textField isEqual:_confirmPasswordTextField]) && _scrollView.contentOffset.y == 0.0f){
+    CGPoint newOffset = CGPointMake(0.0f, _scrollView.contentOffset.y + 116.0f);
+    [_scrollView setContentOffset:newOffset animated:YES];
+  }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField; {
+  [_scrollView setContentOffset:CGPointMake(0.0f, 0.0f) animated:YES];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField; {
   [textField resignFirstResponder];
   return YES;

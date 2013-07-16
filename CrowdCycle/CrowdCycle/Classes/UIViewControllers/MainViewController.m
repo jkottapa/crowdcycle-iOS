@@ -146,7 +146,7 @@
 }
 
 - (IBAction)typeButtonTapped:(UIButton*)sender; {
-  int type = [sender.titleLabel.text intValue];
+  int type = sender.tag;
   if (showType[type]) {
     sender.alpha = 0.4;
     showType[type] = NO;
@@ -228,6 +228,12 @@
 #pragma mark - ServerControllerDelegate Methods
 
 - (void)serverController:(ServerController *)serverController didGetMarkers:(NSArray *)aMarkers; {
+  for(MarkerPin * markerPin in _pinsOnMap.allValues){
+    if(![aMarkers containsObject:markerPin.marker]){
+      [self deletePin:markerPin.markerID];
+    }
+  }
+  
   for (Marker *marker in aMarkers) {
     if ([_pinsOnMap objectForKey:marker.markerID] == nil ) {
       MarkerPin * point = [[MarkerPin  alloc] init];

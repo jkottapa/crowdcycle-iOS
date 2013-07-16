@@ -230,9 +230,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                   parameters:nil
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
+                       [_managedObjectContext deleteObject:aComment];
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                       [self getCommentsForMarker:aComment.marker delegate:aDelegate];
+                       [_managedObjectContext deleteObject:aComment];
                      }];
 }
 

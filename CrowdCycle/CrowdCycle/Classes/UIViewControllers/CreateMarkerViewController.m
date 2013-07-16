@@ -297,8 +297,7 @@
   if([comment.user.userID isEqualToString:[AppDelegate appDelegate].currrentUser.userID] && editingStyle == UITableViewCellEditingStyleDelete){
     ServerController * serverController = [ServerController sharedServerController];
     [serverController deleteComment:comment delegate:self];
-    [serverController.managedObjectContext deleteObject:comment];
-    [serverController getCommentsForMarker:_marker delegate:self];
+    //[serverController getCommentsForMarker:_marker delegate:self];
     return UITableViewCellEditingStyleDelete;
   }
   else{

@@ -90,9 +90,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                      success:^(RKObjectRequestOperation * operation, RKMappingResult * mappingResult) {
                        NSLog(@"Success: %@", operation.HTTPRequestOperation.responseString);
                        
-                       if([(id)aDelegate respondsToSelector:@selector(serverController:didCreateUser:)]){
-                         [aDelegate serverController:self didCreateUser:mappingResult.firstObject];
-                       }
+                       [self loginWithEmail:aUser.email password:aPassword delegate:aDelegate];
                      }
                      failure:^(RKObjectRequestOperation * operation, NSError * error) {
                        NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
@@ -258,6 +256,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ServerController)
                            }
                            failure:^(RKObjectRequestOperation * operation, NSError * error) {
                              NSLog(@"Failure: %@", operation.HTTPRequestOperation.responseString);
+                             
+                             if([(id)aDelegate respondsToSelector:@selector(serverController:didFailWithError:)]){
+                               [aDelegate serverController:self didFailWithError:error];
+                             }
                            }];
 }
 

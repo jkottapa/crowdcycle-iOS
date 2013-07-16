@@ -183,6 +183,7 @@
 }
 
 - (IBAction)commentButtonTapped:(UIButton *)aButton; {
+  [_commentTextField endEditing:YES];
   ServerController * serverController = [ServerController sharedServerController];
   Comment * comment = (Comment *)[[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Comment" inManagedObjectContext:serverController.managedObjectContext] insertIntoManagedObjectContext:serverController.managedObjectContext];
   
@@ -282,7 +283,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath; {
   Comment * comment = [_commentsArray objectAtIndex:indexPath.row];
   
-  if([comment.user isEqual:[AppDelegate appDelegate].currrentUser]){
+  if([comment.user.userID isEqualToString:[AppDelegate appDelegate].currrentUser.userID]){
     return YES;
   }
   else{
@@ -293,7 +294,7 @@
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath; {
   Comment * comment = [_commentsArray objectAtIndex:indexPath.row];
   
-  if([comment.user isEqual:[AppDelegate appDelegate].currrentUser] && editingStyle == UITableViewCellEditingStyleDelete){
+  if([comment.user.userID isEqualToString:[AppDelegate appDelegate].currrentUser.userID] && editingStyle == UITableViewCellEditingStyleDelete){
     ServerController * serverController = [ServerController sharedServerController];
     [serverController deleteComment:comment delegate:self];
     [serverController.managedObjectContext deleteObject:comment];
@@ -331,6 +332,11 @@
 - (void)serverController:(ServerController *)serverController didFailWithError:(NSError *)aError; {
   self.view.userInteractionEnabled = YES;
   [_activityIndicator stopAnimating];
+  _commentsArray = [_marker.comments.allObjects sortedArrayUsingComparator:^NSComparisonResult(Comment * obj1, Comment * obj2) {
+    return [obj1.dateCreated compare:obj2.dateCreated];
+  }];
+  [_tableView reloadData];
+  
   if ([aError.localizedRecoverySuggestion rangeOfString:@"can not cast the same vote twice"].location != NSNotFound) {
     UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You already casted that vote" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
     [alertView show];

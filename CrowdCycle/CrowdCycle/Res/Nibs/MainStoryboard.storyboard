@@ -657,7 +657,7 @@
                                     <rect key="frame" x="0.0" y="411" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38W-gh-uWm">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Comment Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="38W-gh-uWm">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="214" id="Uvb-3v-eON"/>
                                             </constraints>
@@ -689,9 +689,8 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="IoO-RF-YJZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="E3D-Jx-HAe"/>
                                         <constraint firstItem="IoO-RF-YJZ" firstAttribute="baseline" secondItem="38W-gh-uWm" secondAttribute="baseline" type="default" id="MHk-SX-Elj"/>
-                                        <constraint firstItem="IoO-RF-YJZ" firstAttribute="centerY" secondItem="r5g-uD-lkm" secondAttribute="centerY" type="default" id="W8T-fZ-Pi6"/>
                                         <constraint firstItem="38W-gh-uWm" firstAttribute="leading" secondItem="r5g-uD-lkm" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bgY-PL-8gQ"/>
-                                        <constraint firstItem="IoO-RF-YJZ" firstAttribute="bottom" secondItem="38W-gh-uWm" secondAttribute="bottom" type="default" id="pZr-lx-OKj"/>
+                                        <constraint firstItem="38W-gh-uWm" firstAttribute="centerY" secondItem="r5g-uD-lkm" secondAttribute="centerY" type="default" id="iaP-6j-4ft"/>
                                     </constraints>
                                 </view>
                                 <prototypes>

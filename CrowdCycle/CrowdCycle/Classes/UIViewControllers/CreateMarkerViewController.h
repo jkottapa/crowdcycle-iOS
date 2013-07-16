@@ -32,6 +32,7 @@
   IBOutlet UIButton                    * _upVoteButton;
   IBOutlet UIButton                    * _downVoteButton;
   IBOutlet UILabel                     * _voteLabel;
+  IBOutlet UINavigationItem            * _titleNavigationItem;
   
   BOOL                                 _editableMode;
 }

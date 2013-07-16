@@ -38,6 +38,7 @@
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
   _pinsOnMap = [NSMutableDictionary dictionary];
+  _highlightPin = nil;
   locationManager = [[CLLocationManager alloc] init];
   locationManager.delegate = self;
   [locationManager startMonitoringSignificantLocationChanges];
@@ -223,6 +224,7 @@
   MarkerPin * pin = [_pinsOnMap objectForKey:mid];
   [_pinsOnMap removeObjectForKey:mid];
   [_mapView removeAnnotation:pin];
+  _highlightPin = mid;
 }
 
 #pragma mark - ServerControllerDelegate Methods
@@ -255,6 +257,10 @@
       }
       
       [_pinsOnMap setObject:point forKey:marker.markerID];
+      
+      if (_highlightPin != nil && [marker.markerID isEqualToString:_highlightPin]) {
+        [_mapView selectAnnotation:point animated:YES];
+      }
     }
   }
 }

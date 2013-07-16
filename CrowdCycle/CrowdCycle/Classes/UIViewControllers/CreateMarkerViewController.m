@@ -63,6 +63,7 @@
     [typeButton setBackgroundImage:whiteButtonImageHighlight forState:UIControlStateHighlighted];
   }
   if(_marker){
+    _titleNavigationItem.title = @"Marker";
     [self initiateTypeButtons];
     _titleTextField.text = _marker.title;
     _descriptionTextField.text = _marker.markerDescription;
@@ -120,7 +121,7 @@
 - (IBAction)typeButtonTapped:(UIButton*)sender; {
   if (_editableMode) {
     for (UIButton * typeButton in _typeButtons) {
-      typeButton.alpha = .3;
+      typeButton.alpha = .5;
     }
     sender.alpha = 1;
     if([sender.titleLabel.text isEqualToString:@"Point of Interest"]) {
@@ -213,9 +214,17 @@
 
 - (IBAction)deleteButtonTapped:(UIButton *)aButton; {
   [self dismissKeyboard];
-  self.view.userInteractionEnabled = NO;
-  [_activityIndicator startAnimating];
-  [[ServerController sharedServerController] deleteMarker:_marker delegate:self];
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Confirm delete, this action cannot be undone" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+  [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+  if([title isEqualToString:@"Delete"]) {
+    self.view.userInteractionEnabled = NO;
+    [_activityIndicator startAnimating];
+    [[ServerController sharedServerController] deleteMarker:_marker delegate:self];
+  }
 }
 
 - (void)dismissKeyboard; {
@@ -311,6 +320,7 @@
 #pragma mark - ServerControllerDelegate Methods
 
 - (void)serverController:(ServerController *)serverController didCreateComment:(Comment *)aComment; {
+  _commentTextField.text = @"";
   [serverController getCommentsForMarker:_marker delegate:self];
 }
 

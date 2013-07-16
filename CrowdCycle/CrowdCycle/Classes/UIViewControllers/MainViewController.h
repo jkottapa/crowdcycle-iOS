@@ -18,6 +18,7 @@
   CLLocationManager * _locationManager;
   MarkerPin * _createPin;
   MarkerPin * _tappedPin;
+  NSString * _highlightPin;
   NSMutableDictionary * _pinsOnMap;
   BOOL userLocated;
   BOOL showType[5];
